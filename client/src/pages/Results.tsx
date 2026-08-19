@@ -1,9 +1,10 @@
 import { useAuth } from "@/_core/hooks/useAuth";
 import { AppHeader } from "@/components/AppHeader";
+import { ResultsLoadingSkeleton } from "@/components/PageLoadingSkeletons";
 import { useLanguage } from "@/i18n";
 import { trpc } from "@/lib/trpc";
 import type { LocalizedText } from "@shared/simulation/types";
-import { Award, BarChart3, CheckCircle2, ChevronRight, CircleAlert, Lightbulb, Loader2, Share2, Sparkles } from "lucide-react";
+import { Award, BarChart3, CheckCircle2, ChevronRight, CircleAlert, Lightbulb, Share2, Sparkles } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { useLocation, useParams } from "wouter";
 
@@ -25,7 +26,7 @@ export default function Results() {
     }
   }, [result.isFetched, result.data, complete, sessionId]);
   const copy = language === "ar" ? { loading: "جارٍ إعداد تقييمك…", title: "اكتملت المحاكاة", subtitle: "أنجزت تحقيقك في أداء مبيعات الرياض. إليك ملخص الأداء المدعوم بمساهماتك المسجلة.", score: "النتيجة النهائية", skills: "المهارات التي أظهرتها", breakdown: "تفصيل نتائج المهام", strengths: "نقاط القوة", improve: "مجالات التطوير", feedback: "ملاحظات مدعومة بالذكاء الاصطناعي", certificate: "عرض الشهادة", portfolio: "عرض ملفي المهني", back: "العودة إلى مساحة العمل", unavailable: "أكمل جميع المهام قبل فتح النتائج." } : { loading: "Preparing your performance review…", title: "Simulation complete", subtitle: "You have completed the Riyadh sales investigation. Here is a performance summary grounded in the work you recorded.", score: "Final score", skills: "Skills demonstrated", breakdown: "Task score breakdown", strengths: "Strengths", improve: "Areas to improve", feedback: "AI-assisted feedback", certificate: "View certificate", portfolio: "View my portfolio", back: "Return to workspace", unavailable: "Complete every task before opening your results." };
-  if (loading || result.isLoading || complete.isPending) return <div className="grid min-h-screen place-items-center bg-slate-50"><div className="flex items-center gap-3 text-sm font-semibold text-slate-600"><Loader2 className="h-5 w-5 animate-spin text-teal-700" />{copy.loading}</div></div>;
+  if (loading || result.isLoading || complete.isPending) return <ResultsLoadingSkeleton />;
   if (!result.data) return <div className="grid min-h-screen place-items-center bg-slate-50 p-5"><div className="max-w-md rounded-2xl bg-white p-7 text-center shadow-xl shadow-slate-900/5"><CircleAlert className="mx-auto h-8 w-8 text-amber-600" /><p className="mt-4 text-sm leading-6 text-slate-600">{copy.unavailable}</p><button type="button" onClick={() => setLocation(`/workspace/${sessionId}`)} className="mt-5 rounded-xl bg-slate-950 px-4 py-3 text-sm font-bold text-white">{copy.back}</button></div></div>;
   const { result: record, certificate, simulation } = result.data;
   const feedback = record.feedback;

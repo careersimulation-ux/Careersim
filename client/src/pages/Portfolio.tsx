@@ -1,9 +1,10 @@
 import { useAuth } from "@/_core/hooks/useAuth";
 import { AppHeader } from "@/components/AppHeader";
+import { PortfolioLoadingSkeleton } from "@/components/PageLoadingSkeletons";
 import { useLanguage } from "@/i18n";
 import { trpc } from "@/lib/trpc";
 import type { LocalizedText } from "@shared/simulation/types";
-import { Award, Copy, ExternalLink, Eye, EyeOff, GraduationCap, Loader2, Share2, Sparkles } from "lucide-react";
+import { Award, Copy, ExternalLink, Eye, EyeOff, GraduationCap, Share2, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import { useLocation } from "wouter";
 
@@ -33,7 +34,7 @@ export default function Portfolio() {
   const [, setLocation] = useLocation();
   const visibility = trpc.profile.setPortfolioVisibility.useMutation({ onSuccess: () => { query.refetch(); toast.success(language === "ar" ? "تم تحديث الخصوصية" : "Portfolio visibility updated"); }, onError: () => toast.error(language === "ar" ? "تعذر تحديث الخصوصية" : "Could not update visibility") });
   const copy = language === "ar" ? { title: "ملفك المهني", subtitle: "سجل عملي قابل للمشاركة يوضح المحاكاة التي أكملتها والمهارات التي أثبتّها.", public: "الرابط العام", copy: "نسخ الرابط", start: "استكشف المحاكاة", empty: "لم تكمل أي محاكاة بعد.", publicOn: "الملف عام", publicOff: "الملف خاص", makePublic: "اجعل الملف عاماً", makePrivate: "اجعل الملف خاصاً" } : { title: "Your career portfolio", subtitle: "A shareable record of the simulations you have completed and the skills you have demonstrated.", public: "Public link", copy: "Copy link", start: "Explore simulations", empty: "You have not completed a simulation yet.", publicOn: "Portfolio is public", publicOff: "Portfolio is private", makePublic: "Make public", makePrivate: "Make private" };
-  if (loading || query.isLoading) return <div className="grid min-h-screen place-items-center"><Loader2 className="h-6 w-6 animate-spin text-teal-700" /></div>;
+  if (loading || query.isLoading) return <PortfolioLoadingSkeleton />;
   if (!query.data) return <div className="min-h-screen bg-slate-50"><AppHeader /><main className="container py-20 text-center"><p className="text-slate-600">{copy.empty}</p><button type="button" onClick={() => setLocation("/catalog")} className="mt-5 rounded-xl bg-slate-950 px-4 py-3 text-sm font-bold text-white">{copy.start}</button></main></div>;
   const data = query.data as unknown as PortfolioViewData;
   const publicUrl = `${window.location.origin}/u/${data.profile.publicSlug}`;

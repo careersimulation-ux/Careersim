@@ -25,3 +25,4 @@
 - [x] Fix workplace email attachment controls so referenced simulation files reliably open or download from the inbox.
 - [x] Fix the Portfolio page hook-order violation that crashes the `/portfolio` route after query state changes.
 - [x] Fix the Results route query contract so missing or pending completion data never returns `undefined` to the client query cache.
+- [x] Add responsive layout-matched loading skeletons for Portfolio and Results data fetching states.
