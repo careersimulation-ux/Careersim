@@ -91,4 +91,12 @@ The certificate template states that it represents completion of a job simulatio
 
 This project is configured for the platform’s managed autoscaling Node deployment. Before publishing, run `pnpm check` and `pnpm test`, then create a project checkpoint. The deployed service should retain the platform-provided environment variables and use a managed database connection.
 
+### Vercel
+
+CareerSim Gulf is a **Vite React SPA with an Express/tRPC API**, rather than a Next.js application. The root `vercel.json` sets `dist/public` as the Vite output, deploys `api/[...path].ts` as the serverless API entry point, and rewrites client-side routes to the compiled `index.html`. Without this configuration, Vercel can fall back to serving repository files rather than the built interface.
+
+Set these environment variables in Vercel for both Preview and Production before testing sign-in or any protected workflow: `DATABASE_URL`, `JWT_SECRET`, `VITE_APP_ID`, `VITE_OAUTH_PORTAL_URL`, `OAUTH_SERVER_URL`, `OWNER_OPEN_ID`, `BUILT_IN_FORGE_API_URL`, and `BUILT_IN_FORGE_API_KEY`. Also update the OAuth provider callback URL to `https://<your-vercel-domain>/api/oauth/callback`. Manus-managed environment values do not transfer automatically to Vercel.
+
+After setting those variables, redeploy from the Vercel dashboard. The production frontend is built with `pnpm build:client`; API calls are served by the Vercel function.
+
 For a future external-hosting migration, preserve the Node server runtime, secure OAuth callback handling, all server-side environment variables, and the database connection layer. Do not move scoring rules or LLM credentials to the browser.

@@ -36,3 +36,4 @@
 - [x] Fix the fresh-simulation Results route remaining on its loading skeleton after all five tasks are submitted.
 - [x] Push the fully updated CareerSim Gulf codebase to github.com/careersimulation-ux/Careersim and verify the remote default branch.
 - [x] Switch to an approved GitHub identity or repository target with Write access and retry the CareerSim Gulf push.
+- [x] Fix Vercel deployment configuration so the compiled CareerSim Gulf interface and API routes are served instead of repository source files.
