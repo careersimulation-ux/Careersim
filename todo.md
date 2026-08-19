@@ -22,3 +22,4 @@
 - [x] Add automated test coverage for simulation configuration validation, scoring rules, and data aggregation.
 - [x] Verify desktop and mobile experiences, English and Arabic RTL layouts, authenticated route guards, public share routes, production build, runtime logs, and automated tests.
 - [x] Finalize documentation, review the TODO status, and save a delivery checkpoint.
+- [x] Fix workplace email attachment controls so referenced simulation files reliably open or download from the inbox.
