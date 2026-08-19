@@ -58,3 +58,4 @@
 - [ ] Implement configurable education, field, academic-stage, assessment, completion, and score-aware simulation routing with manual career exploration.
 - [ ] Add profile editing with career-path-change confirmation and a personalized career-path experience for high-school and university/graduate students.
 - [ ] Test high-school, university, graduate, returning-user, profile-change, alternate-career, mobile, Supabase, production-build, and Vercel configuration scenarios.
+- [ ] Commit and push the personalized onboarding implementation and Supabase migrations `0002` and `0003` to the CareerSim GitHub main branch.

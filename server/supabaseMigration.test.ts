@@ -12,6 +12,10 @@ const personalizedMigration = fs.readFileSync(
   path.join(projectRoot, "supabase", "migrations", "0002_personalized_student_routing.sql"),
   "utf8",
 );
+const compatibilityMigration = fs.readFileSync(
+  path.join(projectRoot, "supabase", "migrations", "0003_personalized_routing_compatibility.sql"),
+  "utf8",
+);
 
 describe("CareerSim Supabase SQL migration", () => {
   it("creates an isolated schema with the complete persistence model", () => {
@@ -57,5 +61,16 @@ describe("personalized student routing migration", () => {
     expect(personalizedMigration).toContain("grant select, insert, update, delete on careersim.career_routing_rules to service_role");
     expect(personalizedMigration.toLowerCase()).not.toContain("drop table");
     expect(personalizedMigration.toLowerCase()).not.toContain("delete from careersim.profiles");
+  });
+});
+
+describe("personalized routing compatibility migration", () => {
+  it("adds only the missing runtime fields needed by a prior routing draft", () => {
+    for (const column of ["full_name", "assessment_score", "career_path_key", "routing_decision", "career_key", "minimum_assessment_score", "required_completed_simulations", "simulation_slug", "priority", "is_active"]) {
+      expect(compatibilityMigration).toContain(`add column if not exists ${column}`);
+    }
+    expect(compatibilityMigration).toContain("coalesce(minimum_assessment_score, min_assessment_score)");
+    expect(compatibilityMigration.toLowerCase()).not.toContain("drop column");
+    expect(compatibilityMigration.toLowerCase()).not.toContain("delete from");
   });
 });
