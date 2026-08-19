@@ -1,5 +1,6 @@
 import { nanoid } from "nanoid";
 import type { SimulationConfig, TaskScore } from "@shared/simulation/types";
+import { calculateRoutingDecision, type AcademicYear, type EducationLevel } from "@shared/studentRouting";
 import { getSupabase } from "../supabase";
 
 type Row = Record<string, any>;
@@ -20,6 +21,10 @@ function mapProfile(row: Row) {
     graduationYear: row.graduation_year, careerInterests: row.career_interests ?? [], preferredLanguage: row.preferred_language,
     publicSlug: row.public_slug, portfolioIsPublic: row.portfolio_is_public ? "yes" : "no",
     onboardingComplete: row.onboarding_complete ? "yes" : "no", createdAt: date(row.created_at), updatedAt: date(row.updated_at),
+    fullName: row.full_name ?? null, age: row.age ?? null, educationLevel: row.education_level ?? null,
+    academicYear: row.academic_year ?? null, assessmentScore: row.assessment_score ?? null,
+    careerPathKey: row.career_path_key ?? null, recommendedLevel: row.recommended_level ?? null,
+    routingDecision: row.routing_decision ?? {}, onboardingCompletedAt: date(row.onboarding_completed_at),
   };
 }
 
@@ -125,6 +130,106 @@ export async function upsertProfile(input: {
   const { error } = await query;
   if (error) throw new Error(`Supabase profile upsert failed: ${error.message}`);
   return getProfile(input.userId);
+}
+
+type PersonalizedProfileInput = {
+  userId: number;
+  fullName: string;
+  age: number;
+  educationLevel: EducationLevel;
+  country: string;
+  university?: string | null;
+  major?: string | null;
+  academicYear?: AcademicYear;
+  graduationYear?: number | null;
+  careerInterests: string[];
+  preferredLanguage: "en" | "ar";
+  assessmentScore?: number | null;
+};
+
+async function getCompletionEvidence(userId: number) {
+  const rows = assertResult<Row[] | null>(await getSupabase().from("simulation_results").select("simulation_id,total_score").eq("user_id", userId), "completion evidence lookup") ?? [];
+  return {
+    completedSimulationSlugs: rows.map(row => row.simulation_id as string),
+    averageCompletedScore: rows.length ? Math.round(rows.reduce((sum, row) => sum + Number(row.total_score ?? 0), 0) / rows.length) : null,
+  };
+}
+
+async function getRoutingRuleOverride(input: { careerKey: string; educationLevel: EducationLevel; academicYear: AcademicYear; assessmentScore: number | null; averageCompletedScore: number | null; completedSimulationCount: number }) {
+  const { data, error } = await getSupabase().from("career_routing_rules").select("*")
+    .eq("career_key", input.careerKey).eq("education_level", input.educationLevel).eq("is_active", true)
+    .order("priority", { ascending: false });
+  if (error) {
+    if (error.message.toLowerCase().includes("career_routing_rules")) return null;
+    throw new Error(`Supabase routing-rule lookup failed: ${error.message}`);
+  }
+  return (data ?? []).find((row: Row) => {
+    const academicYearMatches = !row.academic_year || row.academic_year === input.academicYear;
+    const assessmentMatches = row.minimum_assessment_score == null || (input.assessmentScore ?? -1) >= Number(row.minimum_assessment_score);
+    const completedScoreMatches = row.minimum_completed_score == null || (input.averageCompletedScore ?? -1) >= Number(row.minimum_completed_score);
+    return academicYearMatches && assessmentMatches && completedScoreMatches && input.completedSimulationCount >= Number(row.required_completed_simulations ?? 0);
+  }) ?? null;
+}
+
+export async function getStudentCareerPath(userId: number) {
+  const profile = await getProfile(userId);
+  if (!profile) return null;
+  const evidence = await getCompletionEvidence(userId);
+  const fallbackDecision = calculateRoutingDecision({
+    educationLevel: (profile.educationLevel as EducationLevel | null) ?? "other",
+    major: profile.major,
+    careerInterests: profile.careerInterests,
+    academicYear: (profile.academicYear as AcademicYear | null) ?? null,
+    assessmentScore: profile.assessmentScore,
+    ...evidence,
+  });
+  const rule = profile.educationLevel ? await getRoutingRuleOverride({
+    careerKey: fallbackDecision.career.key,
+    educationLevel: profile.educationLevel as EducationLevel,
+    academicYear: (profile.academicYear as AcademicYear | null) ?? null,
+    assessmentScore: profile.assessmentScore,
+    averageCompletedScore: evidence.averageCompletedScore,
+    completedSimulationCount: evidence.completedSimulationSlugs.length,
+  }) : null;
+  const decision = rule ? {
+    ...fallbackDecision,
+    level: rule.recommended_level,
+    experience: rule.label ?? fallbackDecision.experience,
+    recommendedSimulationSlug: rule.simulation_slug ?? fallbackDecision.recommendedSimulationSlug,
+    recommendedSimulationAvailable: Boolean(rule.simulation_slug ?? fallbackDecision.recommendedSimulationSlug),
+    isExploration: rule.recommended_level === "explorer",
+    needsSkillCheck: false,
+  } : fallbackDecision;
+  const active = assertResult<Row[] | null>(await getSupabase().from("simulation_sessions").select("*")
+    .eq("user_id", userId).eq("status", "active").order("last_active_at", { ascending: false }).limit(1), "active student session lookup") ?? [];
+  return { profile, decision, completedSimulationCount: evidence.completedSimulationSlugs.length, averageCompletedScore: evidence.averageCompletedScore, activeSession: active[0] ? mapSession(active[0]) : null };
+}
+
+export async function upsertPersonalizedProfile(input: PersonalizedProfileInput) {
+  const existing = await getProfile(input.userId);
+  const evidence = await getCompletionEvidence(input.userId);
+  const decision = calculateRoutingDecision({
+    educationLevel: input.educationLevel,
+    major: input.major,
+    careerInterests: input.careerInterests,
+    academicYear: input.academicYear ?? null,
+    assessmentScore: input.assessmentScore ?? null,
+    ...evidence,
+  });
+  const payload = {
+    user_id: input.userId, full_name: input.fullName.trim(), age: input.age, education_level: input.educationLevel,
+    country: input.country, university: input.university?.trim() || null, major: input.major?.trim() || null,
+    academic_year: input.academicYear ?? null, graduation_year: input.graduationYear ?? null,
+    career_interests: input.careerInterests, preferred_language: input.preferredLanguage,
+    assessment_score: input.assessmentScore ?? null, career_path_key: decision.career.key,
+    recommended_level: decision.level, routing_decision: decision, onboarding_complete: true, onboarding_completed_at: iso(),
+  };
+  const query = existing
+    ? getSupabase().from("profiles").update(payload).eq("user_id", input.userId)
+    : getSupabase().from("profiles").insert({ id: profileId(), ...payload, public_slug: publicSlug(input.userId), portfolio_is_public: true });
+  const { error } = await query;
+  if (error) throw new Error(`Supabase personalized profile save failed: ${error.message}`);
+  return getStudentCareerPath(input.userId);
 }
 
 export async function setPortfolioVisibility(userId: number, isPublic: boolean) {

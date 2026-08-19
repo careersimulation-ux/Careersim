@@ -1,7 +1,7 @@
 import { COOKIE_NAME } from "@shared/const";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
-import { getOwnPortfolio, getOwnedResult, getPublicCertificate, getPublicPortfolio, getProfile, getSessionProgress, listPublishedSimulations, saveCompletion, saveTaskSubmission, setPortfolioVisibility, startOrResumeSession, upsertProfile } from "./db/career";
+import { getOwnPortfolio, getOwnedResult, getPublicCertificate, getPublicPortfolio, getProfile, getSessionProgress, getStudentCareerPath, listPublishedSimulations, saveCompletion, saveTaskSubmission, setPortfolioVisibility, startOrResumeSession, upsertPersonalizedProfile, upsertProfile } from "./db/career";
 import { generateFeedback } from "./feedbackEngine";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
@@ -65,6 +65,25 @@ export const appRouter = router({
       careerInterests: z.array(z.string().min(2).max(64)).min(1).max(6),
       preferredLanguage: z.enum(["en", "ar"]),
     })).mutation(({ ctx, input }) => upsertProfile({ userId: ctx.user.id, ...input })),
+    savePersonalized: protectedProcedure.input(z.object({
+      fullName: z.string().trim().min(2).max(160),
+      age: z.number().int().min(13).max(100),
+      educationLevel: z.enum(["high_school", "university", "graduate", "other"]),
+      country: z.string().trim().min(2).max(80),
+      university: z.string().trim().max(160).optional().nullable(),
+      major: z.string().trim().max(160).optional().nullable(),
+      academicYear: z.enum(["year_1", "year_2", "year_3", "year_4", "year_5", "final_year", "other"]).optional().nullable(),
+      graduationYear: z.number().int().min(1900).max(2200).optional().nullable(),
+      careerInterests: z.array(z.string().trim().min(2).max(64)).min(1).max(9),
+      preferredLanguage: z.enum(["en", "ar"]),
+      assessmentScore: z.number().int().min(0).max(100).optional().nullable(),
+    }).superRefine((value, context) => {
+      if ((value.educationLevel === "university" || value.educationLevel === "graduate") && !value.major) context.addIssue({ code: "custom", path: ["major"], message: "Field of study is required." });
+      if ((value.educationLevel === "university" || value.educationLevel === "graduate") && !value.university) context.addIssue({ code: "custom", path: ["university"], message: "University is required." });
+      if (value.educationLevel === "university" && !value.academicYear) context.addIssue({ code: "custom", path: ["academicYear"], message: "Academic year is required." });
+      if (value.educationLevel === "graduate" && !value.graduationYear) context.addIssue({ code: "custom", path: ["graduationYear"], message: "Graduation year is required." });
+    })).mutation(({ ctx, input }) => upsertPersonalizedProfile({ userId: ctx.user.id, ...input })),
+    careerPath: protectedProcedure.query(({ ctx }) => getStudentCareerPath(ctx.user.id)),
     setPortfolioVisibility: protectedProcedure.input(z.object({ isPublic: z.boolean() })).mutation(({ ctx, input }) => setPortfolioVisibility(ctx.user.id, input.isPublic)),
   }),
   catalog: router({
@@ -85,6 +104,9 @@ export const appRouter = router({
         throw new TRPCError({ code: "PRECONDITION_FAILED", message: "Complete your profile before starting a simulation." });
       }
       const config = requireConfig(input.slug);
+      if (profile.educationLevel === "high_school" && config.difficulty !== "beginner") {
+        throw new TRPCError({ code: "PRECONDITION_FAILED", message: "Start with Career Exploration before an intermediate professional simulation." });
+      }
       const { ensureSimulationSeed } = await import("./db/career");
       await ensureSimulationSeed(config);
       return startOrResumeSession(ctx.user.id, config);

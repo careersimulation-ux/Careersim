@@ -52,3 +52,9 @@
 - [x] Select the next approved CareerSim Gulf enhancement after resolving the current hosting constraint.
 - [x] Define and author a bilingual Business Analyst simulation scenario in the existing JSON-driven engine.
 - [x] Surface the Business Analyst simulation as available in the catalog and verify its complete session, scoring, result, certificate, and portfolio flow.
+- [ ] Audit the existing profile, authentication, localization, simulation, routing, and Supabase integration points for personalized onboarding compatibility.
+- [ ] Add a safe Supabase profile extension and configurable routing-rule model without duplicating user records or exposing student data.
+- [ ] Build a bilingual, mobile-friendly multi-step onboarding modal with education-specific fields, validation, recommendation, and returning-user continuity.
+- [ ] Implement configurable education, field, academic-stage, assessment, completion, and score-aware simulation routing with manual career exploration.
+- [ ] Add profile editing with career-path-change confirmation and a personalized career-path experience for high-school and university/graduate students.
+- [ ] Test high-school, university, graduate, returning-user, profile-change, alternate-career, mobile, Supabase, production-build, and Vercel configuration scenarios.

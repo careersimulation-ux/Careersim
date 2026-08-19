@@ -16,6 +16,8 @@ const Results = lazy(() => import("./pages/Results"));
 const Certificate = lazy(() => import("./pages/Certificate"));
 const Portfolio = lazy(() => import("./pages/Portfolio"));
 const PublicPortfolio = lazy(() => import("./pages/PublicPortfolio"));
+const CareerPath = lazy(() => import("./pages/CareerPath"));
+const ExploreYourFuture = lazy(() => import("./pages/ExploreYourFuture"));
 
 function Router() {
   return <Switch>
@@ -27,6 +29,8 @@ function Router() {
     <Route path="/results/:sessionId" component={Results} />
     <Route path="/certificate/:code" component={Certificate} />
     <Route path="/portfolio" component={Portfolio} />
+    <Route path="/career-path" component={CareerPath} />
+    <Route path="/explore" component={ExploreYourFuture} />
     <Route path="/u/:slug" component={PublicPortfolio} />
     <Route path="/404" component={NotFound} />
     <Route component={NotFound} />

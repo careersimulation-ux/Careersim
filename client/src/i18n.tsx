@@ -25,7 +25,7 @@ export const translateSkill = (skill: string, language: Language) => skillDictio
 
 const copy = {
   en: {
-    nav: { simulations: "Simulations", portfolio: "Portfolio", signIn: "Sign in", start: "Start now" },
+    nav: { simulations: "Simulations", portfolio: "Portfolio", careerPath: "My career path", signIn: "Sign in", start: "Start now" },
     home: {
       eyebrow: "Gulf career readiness, reimagined",
       titleLead: "Get real experience",
@@ -55,7 +55,7 @@ const copy = {
     common: { loading: "Loading…", error: "Something went wrong. Please try again.", english: "English", arabic: "العربية", beginner: "Beginner", intermediate: "Intermediate", advanced: "Advanced" },
   },
   ar: {
-    nav: { simulations: "المحاكاة", portfolio: "ملفي المهني", signIn: "تسجيل الدخول", start: "ابدأ الآن" },
+    nav: { simulations: "المحاكاة", portfolio: "ملفي المهني", careerPath: "مساري المهني", signIn: "تسجيل الدخول", start: "ابدأ الآن" },
     home: {
       eyebrow: "الجاهزية المهنية في الخليج، بشكل مختلف",
       titleLead: "اكتسب خبرة عملية",
