@@ -157,7 +157,7 @@ export const appRouter = router({
     }),
     result: protectedProcedure.input(sessionInput).query(async ({ ctx, input }) => {
       const result = await getOwnedResult(ctx.user.id, input.sessionId);
-      if (!result) return undefined;
+      if (!result) return null;
       const config = getSimulationConfigById(result.result.simulationId);
       return {
         ...result,

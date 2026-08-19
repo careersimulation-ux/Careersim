@@ -19,7 +19,7 @@ export default function Results() {
   const completionStarted = useRef(false);
   const complete = trpc.simulation.complete.useMutation({ onSuccess: () => utils.simulation.result.invalidate({ sessionId }) });
   useEffect(() => {
-    if (result.isFetched && !result.data && !completionStarted.current && !complete.isPending) {
+    if (result.isFetched && result.data === null && !completionStarted.current && !complete.isPending) {
       completionStarted.current = true;
       complete.mutate({ sessionId });
     }
