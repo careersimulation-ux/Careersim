@@ -56,7 +56,8 @@
       "label": { "en": "Retail sales dataset", "ar": "مجموعة بيانات مبيعات التجزئة" },
       "description": { "en": "Twelve months of synthetic branch, product, customer, and marketing performance data.", "ar": "اثنا عشر شهراً من بيانات الأداء الاصطناعية للفروع والمنتجات والعملاء والتسويق." },
       "usefulFor": ["explore-branch-decline", "investigate-cause"],
-      "content": { "en": "Use the Data workspace to filter and explore this file.", "ar": "استخدم مساحة البيانات لتصفية هذا الملف واستكشافه." }
+      "content": { "en": "This downloadable Excel workbook contains 600 monthly branch, product, customer, revenue, margin, marketing, and returns records. Use the Data workspace for interactive analysis or download the workbook for spreadsheet review.", "ar": "يحتوي هذا المصنف القابل للتنزيل على 600 سجل شهري للفروع والمنتجات والعملاء والإيرادات والهوامش والتسويق والمرتجعات. استخدم مساحة البيانات للتحليل التفاعلي أو نزّل المصنف للمراجعة في برنامج الجداول." },
+      "downloadUrl": "/manus-storage/Sales_Data_aeb9d998.xlsx"
     },
     {
       "id": "customer-feedback",
@@ -65,7 +66,8 @@
       "label": { "en": "Customer feedback summary", "ar": "ملخص ملاحظات العملاء" },
       "description": { "en": "A qualitative summary from October to December customer feedback.", "ar": "ملخص نوعي لملاحظات العملاء من أكتوبر إلى ديسمبر." },
       "usefulFor": ["evidence-brief", "management-recommendation"],
-      "content": { "en": "Riyadh North recorded a 29% increase in comments about low awareness of promotions and fewer in-store events. Product availability complaints were stable. Customer service ratings were broadly unchanged.", "ar": "سجل فرع الرياض الشمالية زيادة بنسبة 29% في الملاحظات المتعلقة بضعف الوعي بالعروض وقلة الفعاليات داخل المتجر. ظلت شكاوى توفر المنتجات مستقرة، كما بقيت تقييمات خدمة العملاء دون تغيير كبير." }
+      "content": { "en": "Riyadh North recorded a 29% increase in comments about low awareness of promotions and fewer in-store events. Product availability complaints were stable. Customer service ratings were broadly unchanged.", "ar": "سجل فرع الرياض الشمالية زيادة بنسبة 29% في الملاحظات المتعلقة بضعف الوعي بالعروض وقلة الفعاليات داخل المتجر. ظلت شكاوى توفر المنتجات مستقرة، كما بقيت تقييمات خدمة العملاء دون تغيير كبير." },
+      "downloadUrl": "/manus-storage/Customer_Feedback_78cad193.pdf"
     },
     {
       "id": "marketing-performance",
@@ -74,7 +76,8 @@
       "label": { "en": "Local campaign performance", "ar": "أداء الحملة المحلية" },
       "description": { "en": "Campaign reach and engagement by branch cluster.", "ar": "وصول الحملة والتفاعل حسب مجموعة الفروع." },
       "usefulFor": ["evidence-brief", "decision"],
-      "content": { "en": "The Riyadh North local campaign budget fell 42% in Q4 after creative assets expired. Reach fell 38% and store-visit attributed conversions fell 34%. Riyadh Olaya's campaign remained active and was broadly stable.", "ar": "انخفضت ميزانية الحملة المحلية في الرياض الشمالية بنسبة 42% في الربع الرابع بعد انتهاء الأصول الإبداعية. انخفض الوصول 38% والتحويلات المنسوبة لزيارة المتجر 34%. ظلت حملة الرياض العليا نشطة ومستقرة إلى حد كبير." }
+      "content": { "en": "The Riyadh North local campaign budget fell 42% in Q4 after creative assets expired. Reach fell 38% and store-visit attributed conversions fell 34%. Riyadh Olaya's campaign remained active and was broadly stable.", "ar": "انخفضت ميزانية الحملة المحلية في الرياض الشمالية بنسبة 42% في الربع الرابع بعد انتهاء الأصول الإبداعية. انخفض الوصول 38% والتحويلات المنسوبة لزيارة المتجر 34%. ظلت حملة الرياض العليا نشطة ومستقرة إلى حد كبير." },
+      "downloadUrl": "/manus-storage/Marketing_Performance_03296a12.pdf"
     },
     {
       "id": "branch-overview",
@@ -83,7 +86,8 @@
       "label": { "en": "Branch operations overview", "ar": "نظرة عامة على عمليات الفروع" },
       "description": { "en": "Operational context across priority branches.", "ar": "سياق تشغيلي عبر الفروع ذات الأولوية." },
       "usefulFor": ["decision", "management-recommendation"],
-      "content": { "en": "Riyadh North maintained normal opening hours, staffing, and stock availability in Q4. The branch has available capacity for weekend activation events. No structural operational issue was recorded.", "ar": "حافظ فرع الرياض الشمالية على ساعات العمل والتوظيف وتوفر المخزون بشكل طبيعي في الربع الرابع. يمتلك الفرع قدرة متاحة لفعاليات تنشيط نهاية الأسبوع. لم يتم تسجيل مشكلة تشغيلية هيكلية." }
+      "content": { "en": "Riyadh North maintained normal opening hours, staffing, and stock availability in Q4. The branch has available capacity for weekend activation events. No structural operational issue was recorded.", "ar": "حافظ فرع الرياض الشمالية على ساعات العمل والتوظيف وتوفر المخزون بشكل طبيعي في الربع الرابع. يمتلك الفرع قدرة متاحة لفعاليات تنشيط نهاية الأسبوع. لم يتم تسجيل مشكلة تشغيلية هيكلية." },
+      "downloadUrl": "/manus-storage/Branch_Overview_35fe7a29.pdf"
     },
     {
       "id": "management-request",
@@ -92,7 +96,8 @@
       "label": { "en": "Management brief", "ar": "ملخص طلب الإدارة" },
       "description": { "en": "The scope, deadline, and decision constraint for this analysis.", "ar": "النطاق والموعد النهائي وقيد القرار لهذا التحليل." },
       "usefulFor": ["management-recommendation"],
-      "content": { "en": "Provide a concise diagnosis and a single recommendation for next month. The budget is capped at SAR 100,000. Prioritize an action that can address the root cause, not only the symptom.", "ar": "قدّم تشخيصاً موجزاً وتوصية واحدة للشهر القادم. الحد الأقصى للميزانية هو 100,000 ريال سعودي. أعط الأولوية لإجراء يعالج السبب الجذري وليس العرض فقط." }
+      "content": { "en": "Provide a concise diagnosis and a single recommendation for next month. The budget is capped at SAR 100,000. Prioritize an action that can address the root cause, not only the symptom.", "ar": "قدّم تشخيصاً موجزاً وتوصية واحدة للشهر القادم. الحد الأقصى للميزانية هو 100,000 ريال سعودي. أعط الأولوية لإجراء يعالج السبب الجذري وليس العرض فقط." },
+      "downloadUrl": "/manus-storage/Management_Request_afa2a568.pdf"
     }
   ],
   "datasetBlueprint": {

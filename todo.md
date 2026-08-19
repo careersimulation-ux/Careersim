@@ -26,3 +26,11 @@
 - [x] Fix the Portfolio page hook-order violation that crashes the `/portfolio` route after query state changes.
 - [x] Fix the Results route query contract so missing or pending completion data never returns `undefined` to the client query cache.
 - [x] Add responsive layout-matched loading skeletons for Portfolio and Results data fetching states.
+- [x] Audit the full sign-in, onboarding, simulation, scoring, feedback, certificate, and portfolio journey for functional defects.
+- [x] Generate a real Excel workbook containing the Junior Data Analyst sales dataset and make it downloadable from inbox and files.
+- [x] Generate real PDF evidence documents for the inbox attachments and make them downloadable from inbox and files.
+- [x] Verify the complete user journey and downloadable attachments from the mobile and desktop preview flows.
+- [x] Add an automated full five-task simulation regression test covering configuration, downloadable asset URLs, task scoring, and 100-point completion.
+- [x] Correct workspace task progress so resumed and completed sessions select the appropriate current or final task instead of always showing task 1 of 5.
+- [x] Add Data Analysis and Business Intelligence as explicit onboarding career-interest choices for the live validation profile.
+- [x] Fix the fresh-simulation Results route remaining on its loading skeleton after all five tasks are submitted.

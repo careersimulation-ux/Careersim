@@ -7,7 +7,7 @@ import { useState } from "react";
 import { useLocation } from "wouter";
 import { toast } from "sonner";
 
-const interestOptions = ["Technology", "Business", "Finance", "Marketing", "Engineering", "Science"];
+const interestOptions = ["Data Analysis", "Business Intelligence", "Technology", "Business", "Finance", "Marketing", "Engineering", "Science"];
 const countries = ["Saudi Arabia", "United Arab Emirates", "Qatar", "Kuwait", "Bahrain", "Oman"];
 
 export default function Onboarding() {
@@ -18,7 +18,7 @@ export default function Onboarding() {
   const [university, setUniversity] = useState("");
   const [major, setMajor] = useState("");
   const [graduationYear, setGraduationYear] = useState(new Date().getFullYear() + 1);
-  const [interests, setInterests] = useState<string[]>(["Technology"]);
+  const [interests, setInterests] = useState<string[]>(["Data Analysis"]);
   const mutation = trpc.profile.completeOnboarding.useMutation({
     onSuccess: () => { toast.success(language === "ar" ? "تم حفظ ملفك المهني" : "Your profile is ready"); setLocation("/catalog"); },
     onError: () => toast.error(t.common.error),

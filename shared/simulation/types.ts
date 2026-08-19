@@ -72,6 +72,7 @@ export type SimulationConfig = {
     description: LocalizedText;
     usefulFor: string[];
     content: LocalizedText;
+    downloadUrl: string;
   }>;
   datasetBlueprint: {
     months: string[];

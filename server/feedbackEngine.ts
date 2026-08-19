@@ -13,6 +13,22 @@ export type FeedbackResult = {
   summary: string;
 };
 
+const FEEDBACK_TIMEOUT_MS = 8_000;
+
+export async function withTimeout<T>(work: Promise<T>, timeoutMs: number, operation: string): Promise<T> {
+  let timeout: ReturnType<typeof setTimeout> | undefined;
+  try {
+    return await Promise.race([
+      work,
+      new Promise<T>((_, reject) => {
+        timeout = setTimeout(() => reject(new Error(`${operation} exceeded ${timeoutMs}ms`)), timeoutMs);
+      }),
+    ]);
+  } finally {
+    if (timeout) clearTimeout(timeout);
+  }
+}
+
 function fallbackFeedback(payload: FeedbackPayload): FeedbackResult {
   const highScore = payload.score >= 75;
   const language = payload.locale === "ar" ? "ar" : "en";
@@ -41,11 +57,11 @@ function fallbackFeedback(payload: FeedbackPayload): FeedbackResult {
 export async function generateFeedback(payload: FeedbackPayload): Promise<FeedbackResult> {
   const fallback = fallbackFeedback(payload);
   try {
-    const models = await listLLMModels();
+    const models = await withTimeout(listLLMModels(), FEEDBACK_TIMEOUT_MS, "Model listing");
     const model = models.data.find(candidate => candidate.id === "gpt-5-mini")?.id ?? models.data[0]?.id;
     if (!model) return fallback;
 
-    const response = await invokeLLM({
+    const response = await withTimeout(invokeLLM({
       model,
       messages: [
         {
@@ -78,7 +94,7 @@ export async function generateFeedback(payload: FeedbackPayload): Promise<Feedba
         },
       },
       maxTokens: 500,
-    });
+    }), FEEDBACK_TIMEOUT_MS, "Feedback generation");
     const content = response.choices[0]?.message.content;
     if (typeof content !== "string") return fallback;
     const parsed = JSON.parse(content) as FeedbackResult;
