@@ -34,4 +34,5 @@
 - [x] Correct workspace task progress so resumed and completed sessions select the appropriate current or final task instead of always showing task 1 of 5.
 - [x] Add Data Analysis and Business Intelligence as explicit onboarding career-interest choices for the live validation profile.
 - [x] Fix the fresh-simulation Results route remaining on its loading skeleton after all five tasks are submitted.
-- [ ] Push the fully updated CareerSim Gulf codebase to github.com/careersimulation-ux/Careersim and verify the remote default branch.
+- [x] Push the fully updated CareerSim Gulf codebase to github.com/careersimulation-ux/Careersim and verify the remote default branch.
+- [x] Switch to an approved GitHub identity or repository target with Write access and retry the CareerSim Gulf push.
