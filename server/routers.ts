@@ -146,14 +146,17 @@ export const appRouter = router({
       const totalScore = state.scores.reduce((total, score) => total + score.score, 0);
       const skillScores = calculateSkillScores(state.scores, config.id);
       const profile = await getProfile(ctx.user.id);
-      const finalResponse = state.submissions.find(submission => submission.taskId === "management-recommendation");
+      const locale = profile?.preferredLanguage === "ar" ? "ar" : "en";
+      const finalTask = config.tasks.find(task => task.type === "recommendation");
+      const finalResponse = state.submissions.find(submission => submission.taskId === finalTask?.id);
       const feedback = await generateFeedback({
         score: totalScore,
         taskEvidence: state.scores.flatMap(score => score.feedbackContext),
         finalRecommendation: JSON.stringify(finalResponse?.response ?? {}),
-        locale: profile?.preferredLanguage === "ar" ? "ar" : "en",
+        simulationTitle: config.title[locale],
+        locale,
       });
-      return saveCompletion({ userId: ctx.user.id, sessionId: input.sessionId, simulationId: config.id, totalScore, skillScores, feedback });
+      return saveCompletion({ userId: ctx.user.id, sessionId: input.sessionId, simulationId: config.id, totalScore, skillScores, feedback, portfolioSummary: config.portfolioSummary[locale] });
     }),
     result: protectedProcedure.input(sessionInput).query(async ({ ctx, input }) => {
       const result = await getOwnedResult(ctx.user.id, input.sessionId);

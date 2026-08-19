@@ -15,18 +15,6 @@ export type CatalogPlaceholder = {
 
 export const futureSimulationPlaceholders: CatalogPlaceholder[] = [
   {
-    id: "placeholder-business-analyst",
-    slug: "business-analyst",
-    title: { en: "Business Analyst", ar: "محلل أعمال" },
-    company: { en: "Gulf Growth Partners", ar: "شركاء النمو الخليجي" },
-    industry: { en: "Strategy & Operations", ar: "الاستراتيجية والعمليات" },
-    category: "business",
-    difficulty: "intermediate",
-    estimatedMinutes: 80,
-    skills: ["Business Analysis", "Stakeholder Thinking", "Problem Solving"],
-    status: "coming_soon",
-  },
-  {
     id: "placeholder-financial-analyst",
     slug: "financial-analyst",
     title: { en: "Financial Analyst", ar: "محلل مالي" },

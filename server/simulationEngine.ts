@@ -1,4 +1,5 @@
 import juniorDataAnalystJson from "@shared/simulations/junior-data-analyst.json";
+import businessAnalystJson from "@shared/simulations/business-analyst.json";
 import type { SimulationConfig, SimulationTaskConfig } from "@shared/simulation/types";
 import { z } from "zod";
 
@@ -16,7 +17,15 @@ const simulationConfigSchema = z.object({
   estimatedMinutes: z.number().positive(),
   description: localizedTextSchema,
   story: localizedTextSchema,
+  portfolioSummary: localizedTextSchema,
   skills: z.array(z.string().min(1)).min(1),
+  dataExplorer: z.object({
+    title: localizedTextSchema,
+    subtitle: localizedTextSchema,
+    entityLabel: localizedTextSchema,
+    categoryLabel: localizedTextSchema,
+    metrics: z.object({ revenue: localizedTextSchema, profit: localizedTextSchema, customers: localizedTextSchema, units: localizedTextSchema, aov: localizedTextSchema, returns: localizedTextSchema, chart: localizedTextSchema }),
+  }).optional(),
   characters: z.array(z.object({ id: z.string().min(1), name: z.string().min(1), title: localizedTextSchema, initials: z.string().min(1), color: z.string().min(1) })).min(1),
   emails: z.array(z.object({ id: z.string().min(1), from: z.string().min(1), subject: localizedTextSchema, preview: localizedTextSchema, body: localizedTextSchema, timestamp: z.string().min(1), attachments: z.array(z.string()), unlockAfterTask: z.number().int().positive().optional() })).min(1),
   files: z.array(z.object({ id: z.string().min(1), name: z.string().min(1), kind: z.enum(["dataset", "report", "memo"]), label: localizedTextSchema, description: localizedTextSchema, usefulFor: z.array(z.string()), content: localizedTextSchema, downloadUrl: z.string().startsWith("/manus-storage/") })).min(1),
@@ -35,7 +44,10 @@ export function validateSimulationConfig(raw: unknown): SimulationConfig {
   return raw as SimulationConfig;
 }
 
-const configs: SimulationConfig[] = [validateSimulationConfig(juniorDataAnalystJson)];
+const configs: SimulationConfig[] = [
+  validateSimulationConfig(juniorDataAnalystJson),
+  validateSimulationConfig(businessAnalystJson),
+];
 
 function removePrivateRubricFields(task: SimulationTaskConfig): SimulationTaskConfig {
   return {

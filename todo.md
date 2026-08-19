@@ -44,3 +44,11 @@
 - [x] Replace the CareerSim server persistence helpers with a Supabase-backed implementation while preserving Manus OAuth identities and existing tRPC contracts.
 - [x] Verify the full authenticated Supabase workflow: onboarding, session start, five task submissions, completion, certificate, and portfolio records.
 - [x] Validate a complete simulated student workflow against Supabase and document the migration, credential, and production configuration requirements.
+- [ ] Inspect the connected Vercel project and confirm the current production deployment configuration.
+- [ ] Configure the required server-only Supabase environment variables for Vercel Preview and Production.
+- [ ] Guide the user to redeploy the latest GitHub main branch from the Vercel dashboard after configuration.
+- [ ] Verify the deployed Vercel application can load the Supabase-backed catalog and protected sign-in flow.
+- [x] Confirm whether the requested website is a new standalone product or an expansion of the existing CareerSim Gulf application, including its audience and core features.
+- [x] Select the next approved CareerSim Gulf enhancement after resolving the current hosting constraint.
+- [x] Define and author a bilingual Business Analyst simulation scenario in the existing JSON-driven engine.
+- [x] Surface the Business Analyst simulation as available in the catalog and verify its complete session, scoring, result, certificate, and portfolio flow.

@@ -11,6 +11,7 @@
   "estimatedMinutes": 75,
   "description": { "en": "Investigate a sales decline across Saudi retail branches and make a data-supported recommendation for management.", "ar": "تحقق من انخفاض المبيعات عبر فروع التجزئة في السعودية وقدّم توصية للإدارة مدعومة بالبيانات." },
   "story": { "en": "You have joined Gulf Retail Group's Business Intelligence team. Before tomorrow's management meeting, Sara Al-Harbi needs an evidence-based explanation for Riyadh's recent sales decline.", "ar": "انضممت إلى فريق ذكاء الأعمال في مجموعة الخليج للتجزئة. قبل اجتماع الإدارة غداً، تحتاج سارة الحربي إلى تفسير مدعوم بالأدلة لانخفاض مبيعات الرياض مؤخراً." },
+  "portfolioSummary": { "en": "Analyzed synthetic retail sales data to identify the primary drivers behind a regional sales decline and proposed a data-supported management recommendation.", "ar": "حلل بيانات مبيعات تجزئة اصطناعية لتحديد المحركات الرئيسية لانخفاض مبيعات إقليمي واقترح توصية إدارية مدعومة بالبيانات." },
   "skills": ["Data Analysis", "Problem Solving", "Business Thinking", "Decision Making", "Business Communication"],
   "characters": [
     { "id": "sara", "name": "Sara Al-Harbi", "title": { "en": "BI Manager", "ar": "مديرة ذكاء الأعمال" }, "initials": "SA", "color": "teal" },

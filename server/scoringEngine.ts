@@ -8,6 +8,13 @@ const conceptAliases: Record<string, string[]> = {
   campaign: ["campaign", "marketing", "حملة", "التسويق"],
   targeted: ["targeted", "local", "focused", "مستهدفة", "محلية"],
   activation: ["activation", "event", "in-store", "فعالية", "تنشيط"],
+  stakeholder: ["stakeholder", "stakeholders", "أصحاب المصلحة"],
+  process: ["process", "audit", "عملية", "تدقيق"],
+  handoff: ["handoff", "handoffs", "transfer", "تسليم"],
+  workflow: ["workflow", "process", "سير العمل", "العملية"],
+  pilot: ["pilot", "trial", "تجربة"],
+  owner: ["owner", "accountable", "responsible", "مسؤول"],
+  jeddah: ["jeddah", "جدة"],
 };
 
 function responseText(response: Record<string, unknown>) {

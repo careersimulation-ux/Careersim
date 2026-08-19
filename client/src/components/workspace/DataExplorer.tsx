@@ -1,5 +1,5 @@
 import { useLanguage } from "@/i18n";
-import type { SalesRecord } from "@shared/simulation/types";
+import type { SalesRecord, SimulationConfig } from "@shared/simulation/types";
 import { BarChart3, Search, SlidersHorizontal } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
@@ -7,14 +7,16 @@ import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxi
 const money = (value: number, language: "en" | "ar") => new Intl.NumberFormat(language === "ar" ? "ar-SA" : "en-SA", { style: "currency", currency: "SAR", notation: "compact", maximumFractionDigits: 1 }).format(value);
 const count = (value: number, language: "en" | "ar") => new Intl.NumberFormat(language === "ar" ? "ar-SA" : "en-US", { notation: "compact", maximumFractionDigits: 1 }).format(value);
 
-export function DataExplorer({ records }: { records: SalesRecord[] }) {
+export function DataExplorer({ records, context }: { records: SalesRecord[]; context?: SimulationConfig["dataExplorer"] }) {
   const { language } = useLanguage();
   const [branch, setBranch] = useState("all");
   const [category, setCategory] = useState("all");
   const [month, setMonth] = useState("all");
   const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState<"revenue" | "customers" | "profit" | "returns">("revenue");
-  const labels = language === "ar" ? { title: "مساحة تحليل البيانات", subtitle: "استخدم الفلاتر للعثور على الأنماط وادعم نتائجك بالأرقام.", all: "الكل", branch: "الفرع", category: "الفئة", period: "الفترة", search: "ابحث في البيانات…", sort: "ترتيب حسب", revenue: "إجمالي الإيرادات", profit: "إجمالي الربح", customers: "العملاء", units: "الوحدات المباعة", aov: "متوسط قيمة الطلب", returns: "المرتجعات", table: "السجلات التفصيلية", chart: "الإيرادات حسب الشهر" } : { title: "Data analysis workspace", subtitle: "Use the filters to find patterns and support your findings with numbers.", all: "All", branch: "Branch", category: "Category", period: "Period", search: "Search records…", sort: "Sort by", revenue: "Total revenue", profit: "Total profit", customers: "Customers", units: "Units sold", aov: "Average order value", returns: "Returns", table: "Detailed records", chart: "Revenue by month" };
+  const defaults = language === "ar" ? { title: "مساحة تحليل البيانات", subtitle: "استخدم الفلاتر للعثور على الأنماط وادعم نتائجك بالأرقام.", all: "الكل", branch: "الفرع", category: "الفئة", period: "الفترة", search: "ابحث في البيانات…", sort: "ترتيب حسب", revenue: "إجمالي الإيرادات", profit: "إجمالي الربح", customers: "العملاء", units: "الوحدات المباعة", aov: "متوسط قيمة الطلب", returns: "المرتجعات", table: "السجلات التفصيلية", chart: "الإيرادات حسب الشهر" } : { title: "Data analysis workspace", subtitle: "Use the filters to find patterns and support your findings with numbers.", all: "All", branch: "Branch", category: "Category", period: "Period", search: "Search records…", sort: "Sort by", revenue: "Total revenue", profit: "Total profit", customers: "Customers", units: "Units sold", aov: "Average order value", returns: "Returns", table: "Detailed records", chart: "Revenue by month" };
+  const localized = (value: { en: string; ar: string } | undefined) => value?.[language];
+  const labels = context ? { ...defaults, title: localized(context.title) ?? defaults.title, subtitle: localized(context.subtitle) ?? defaults.subtitle, branch: localized(context.entityLabel) ?? defaults.branch, category: localized(context.categoryLabel) ?? defaults.category, revenue: localized(context.metrics.revenue) ?? defaults.revenue, profit: localized(context.metrics.profit) ?? defaults.profit, customers: localized(context.metrics.customers) ?? defaults.customers, units: localized(context.metrics.units) ?? defaults.units, aov: localized(context.metrics.aov) ?? defaults.aov, returns: localized(context.metrics.returns) ?? defaults.returns, chart: localized(context.metrics.chart) ?? defaults.chart } : defaults;
   const branches = useMemo(() => Array.from(new Set(records.map(record => record.branch))), [records]);
   const categories = useMemo(() => Array.from(new Set(records.map(record => record.productCategory))), [records]);
   const months = useMemo(() => Array.from(new Set(records.map(record => record.month))), [records]);

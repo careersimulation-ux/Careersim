@@ -1,0 +1,155 @@
+{
+  "version": "1.0.0",
+  "id": "sim_business_analyst_ggp",
+  "slug": "business-analyst-gulf-growth-partners",
+  "title": { "en": "Business Analyst", "ar": "محلل أعمال" },
+  "company": { "en": "Gulf Growth Partners", "ar": "شركاء النمو الخليجي" },
+  "role": { "en": "Business Analyst", "ar": "محلل أعمال" },
+  "category": "business",
+  "industry": { "en": "Strategy & Operations", "ar": "الاستراتيجية والعمليات" },
+  "difficulty": "intermediate",
+  "estimatedMinutes": 80,
+  "description": { "en": "Diagnose a stalled opportunity pipeline and recommend a measurable workflow improvement for a Gulf advisory team.", "ar": "شخّص تعثر مسار الفرص واقترح تحسيناً قابلاً للقياس لسير العمل في فريق استشاري خليجي." },
+  "story": { "en": "You have joined Gulf Growth Partners as a Business Analyst. Before the Q1 operating review, Hala Al-Mutairi needs an evidence-led explanation for Jeddah Growth's declining opportunity pipeline and a practical workflow pilot.", "ar": "انضممت إلى شركاء النمو الخليجي كمحلل أعمال. قبل مراجعة عمليات الربع الأول، تحتاج هلا المطيري إلى تفسير قائم على الأدلة لانخفاض مسار الفرص في جدة للنمو وتجربة عملية لتحسين سير العمل." },
+  "portfolioSummary": { "en": "Mapped a stalled opportunity pipeline, synthesized stakeholder evidence, and proposed a measurable workflow pilot for a Gulf advisory team.", "ar": "حلل مسار فرص متعثر، ولخّص أدلة أصحاب المصلحة، واقترح تجربة قابلة للقياس لتحسين سير العمل لفريق استشاري خليجي." },
+  "skills": ["Business Analysis", "Stakeholder Management", "Process Improvement", "Decision Making", "Business Communication"],
+  "dataExplorer": {
+    "title": { "en": "Opportunity analysis workspace", "ar": "مساحة تحليل الفرص" },
+    "subtitle": { "en": "Use pipeline signals to identify where the workflow is losing momentum and support your conclusion with evidence.", "ar": "استخدم مؤشرات المسار لتحديد موضع فقدان الزخم في سير العمل وادعم استنتاجك بالأدلة." },
+    "entityLabel": { "en": "Office", "ar": "المكتب" },
+    "categoryLabel": { "en": "Service line", "ar": "خط الخدمة" },
+    "metrics": {
+      "revenue": { "en": "Pipeline value", "ar": "قيمة المسار" },
+      "profit": { "en": "Expected margin", "ar": "الهامش المتوقع" },
+      "customers": { "en": "Qualified leads", "ar": "الفرص المؤهلة" },
+      "units": { "en": "Discovery calls", "ar": "مكالمات الاستكشاف" },
+      "aov": { "en": "Average opportunity value", "ar": "متوسط قيمة الفرصة" },
+      "returns": { "en": "Stalled opportunities", "ar": "الفرص المتعثرة" },
+      "chart": { "en": "Pipeline value by month", "ar": "قيمة المسار حسب الشهر" }
+    }
+  },
+  "characters": [
+    { "id": "hala", "name": "Hala Al-Mutairi", "title": { "en": "Operations Director", "ar": "مديرة العمليات" }, "initials": "HM", "color": "teal" },
+    { "id": "faisal", "name": "Faisal Al-Harbi", "title": { "en": "Jeddah Growth Lead", "ar": "قائد نمو جدة" }, "initials": "FH", "color": "blue" },
+    { "id": "noor", "name": "Noor Al-Salem", "title": { "en": "Client Success Manager", "ar": "مديرة نجاح العملاء" }, "initials": "NS", "color": "amber" }
+  ],
+  "emails": [
+    {
+      "id": "operating-review-request",
+      "from": "Hala Al-Mutairi",
+      "subject": { "en": "Priority review — Jeddah opportunity pipeline", "ar": "مراجعة أولوية — مسار فرص جدة" },
+      "preview": { "en": "Jeddah Growth is losing momentum between discovery and proposal. Please identify the cause.", "ar": "يفقد فريق نمو جدة الزخم بين الاستكشاف والمقترح. يرجى تحديد السبب." },
+      "body": { "en": "Good morning. The Jeddah Growth pipeline has fallen behind its peers during the last quarter. We need an evidence-led explanation of where the workflow is slowing down and one practical intervention to test in Q1.", "ar": "صباح الخير. تأخر مسار نمو جدة عن نظرائه خلال الربع الأخير. نحتاج إلى تفسير قائم على الأدلة لموضع تباطؤ سير العمل وتدخل عملي واحد لاختباره في الربع الأول." },
+      "timestamp": "Monday, 08:45",
+      "attachments": ["growth-opportunity-pipeline", "leadership-brief"]
+    },
+    {
+      "id": "stakeholder-context",
+      "from": "Faisal Al-Harbi",
+      "subject": { "en": "What the Jeddah team is seeing", "ar": "ما يراه فريق جدة" },
+      "preview": { "en": "Leads are waiting for an owner and discovery notes are repeatedly recreated.", "ar": "تنتظر الفرص تعيين مسؤول، وتُعاد كتابة ملاحظات الاستكشاف مراراً." },
+      "body": { "en": "The Jeddah team is not seeing a demand problem. Opportunities wait for a discovery owner and the next step is managed in separate spreadsheets. Compare this with the stakeholder interviews and process audit.", "ar": "لا يرى فريق جدة مشكلة في الطلب. تنتظر الفرص مسؤول الاستكشاف، وتتم إدارة الخطوة التالية في جداول منفصلة. قارن ذلك بمقابلات أصحاب المصلحة وتدقيق العملية." },
+      "timestamp": "Monday, 11:10",
+      "attachments": ["stakeholder-interviews", "process-audit"],
+      "unlockAfterTask": 1
+    },
+    {
+      "id": "leadership-decision",
+      "from": "Hala Al-Mutairi",
+      "subject": { "en": "Q1 decision — keep the intervention narrow", "ar": "قرار الربع الأول — أبقِ التدخل محدوداً" },
+      "preview": { "en": "Choose a measurable pilot, not a full systems replacement.", "ar": "اختر تجربة قابلة للقياس، لا استبدالاً كاملاً للأنظمة." },
+      "body": { "en": "Please recommend a focused pilot that the Jeddah team can run within eight weeks and the SAR 80,000 improvement budget. We need clear ownership and measurable adoption.", "ar": "يرجى التوصية بتجربة مركزة يستطيع فريق جدة تنفيذها خلال ثمانية أسابيع وضمن ميزانية التحسين البالغة 80,000 ريال. نحتاج إلى مسؤولية واضحة واعتماد قابل للقياس." },
+      "timestamp": "Tuesday, 09:20",
+      "attachments": ["leadership-brief"],
+      "unlockAfterTask": 3
+    }
+  ],
+  "files": [
+    {
+      "id": "growth-opportunity-pipeline",
+      "name": "Growth_Opportunity_Pipeline.xlsx",
+      "kind": "dataset",
+      "label": { "en": "Opportunity pipeline dataset", "ar": "مجموعة بيانات مسار الفرص" },
+      "description": { "en": "Synthetic qualified-lead, proposal, and pipeline-value signals across Gulf Growth Partners offices.", "ar": "مؤشرات اصطناعية للفرص المؤهلة والمقترحات وقيمة المسار عبر مكاتب شركاء النمو الخليجي." },
+      "usefulFor": ["locate-pipeline-gap", "test-handoff"],
+      "content": { "en": "Compare qualified lead volume and pipeline value across offices and quarters.", "ar": "قارن حجم الفرص المؤهلة وقيمة المسار بين المكاتب والأرباع." },
+      "downloadUrl": "/manus-storage/Growth_Opportunity_Pipeline_fb2eb0ea.xlsx"
+    },
+    {
+      "id": "stakeholder-interviews",
+      "name": "Stakeholder_Interviews.pdf",
+      "kind": "report",
+      "label": { "en": "Stakeholder interview synthesis", "ar": "ملخص مقابلات أصحاب المصلحة" },
+      "description": { "en": "Interview insights from Sales, Delivery, and Client Success teams.", "ar": "رؤى مقابلات من فرق المبيعات والتنفيذ ونجاح العملاء." },
+      "usefulFor": ["evidence-synthesis", "workflow-decision", "executive-recommendation"],
+      "content": { "en": "Stakeholders report unclear discovery ownership, fragmented notes, duplicated discovery calls, and slower prospect follow-up in Jeddah Growth.", "ar": "أفاد أصحاب المصلحة بعدم وضوح مسؤولية الاستكشاف وتشتت الملاحظات وتكرار مكالمات الاستكشاف وبطء متابعة العملاء المحتملين في نمو جدة." },
+      "downloadUrl": "/manus-storage/Stakeholder_Interviews_af1e5911.pdf"
+    },
+    {
+      "id": "process-audit",
+      "name": "Process_Audit.pdf",
+      "kind": "report",
+      "label": { "en": "Discovery-to-proposal process audit", "ar": "تدقيق عملية الاستكشاف إلى المقترح" },
+      "description": { "en": "A current-state audit of handoffs, wait times, and ownership gaps.", "ar": "تدقيق للحالة الحالية لعمليات التسليم وأوقات الانتظار وفجوات المسؤولية." },
+      "usefulFor": ["evidence-synthesis", "workflow-decision", "executive-recommendation"],
+      "content": { "en": "The audit found seven manual handoffs, a 2.8-day average handoff wait, duplicated discovery questions, and no accountable owner for many Jeddah Growth opportunities.", "ar": "وجد التدقيق سبع عمليات تسليم يدوية ومتوسط انتظار 2.8 يوم وتكرار أسئلة الاستكشاف وعدم وجود مسؤول محدد للعديد من فرص نمو جدة." },
+      "downloadUrl": "/manus-storage/Process_Audit_8042e10d.pdf"
+    },
+    {
+      "id": "leadership-brief",
+      "name": "Leadership_Brief.pdf",
+      "kind": "memo",
+      "label": { "en": "Q1 leadership decision brief", "ar": "ملخص قرار القيادة للربع الأول" },
+      "description": { "en": "Budget, timing, and measurement constraints for the workflow intervention.", "ar": "قيود الميزانية والتوقيت والقياس لتدخل سير العمل." },
+      "usefulFor": ["workflow-decision", "executive-recommendation"],
+      "content": { "en": "Leadership requests one measurable eight-week intervention within a SAR 80,000 budget. A full CRM replacement and broad price changes are out of scope.", "ar": "تطلب القيادة تدخلاً واحداً قابلاً للقياس لمدة ثمانية أسابيع ضمن ميزانية 80,000 ريال. استبدال نظام إدارة العملاء بالكامل وتغييرات الأسعار الواسعة خارج النطاق." },
+      "downloadUrl": "/manus-storage/Leadership_Brief_df1dd95d.pdf"
+    }
+  ],
+  "datasetBlueprint": {
+    "months": ["2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12"],
+    "branches": [
+      { "name": "Riyadh Enterprise", "city": "Riyadh", "baselineCustomers": 156, "baselineAov": 12000 },
+      { "name": "Riyadh Scale-up", "city": "Riyadh", "baselineCustomers": 132, "baselineAov": 11000 },
+      { "name": "Jeddah Growth", "city": "Jeddah", "baselineCustomers": 141, "baselineAov": 11500 },
+      { "name": "Dammam Industry", "city": "Dammam", "baselineCustomers": 118, "baselineAov": 10800 },
+      { "name": "Khobar Advisory", "city": "Khobar", "baselineCustomers": 103, "baselineAov": 10600 }
+    ],
+    "categories": [
+      { "category": "Strategy", "product": "Growth Strategy Review", "multiplier": 1.2, "margin": 0.42 },
+      { "category": "Operations", "product": "Operating Model Design", "multiplier": 1.05, "margin": 0.45 },
+      { "category": "Digital", "product": "Transformation Roadmap", "multiplier": 1.14, "margin": 0.4 },
+      { "category": "People", "product": "Workforce Planning", "multiplier": 0.88, "margin": 0.47 },
+      { "category": "Analytics", "product": "Performance Dashboard", "multiplier": 0.92, "margin": 0.43 }
+    ],
+    "anomaly": { "branch": "Jeddah Growth", "months": ["2025-10", "2025-11", "2025-12"], "customerMultiplier": 0.63, "marketingMultiplier": 0.68, "returnMultiplier": 1.25 }
+  },
+  "tasks": [
+    {
+      "id": "locate-pipeline-gap", "type": "data_exploration", "title": { "en": "Locate the pipeline gap", "ar": "حدد فجوة المسار" }, "objective": { "en": "Identify the office with the largest Q4 pipeline-value decline compared with Q3.", "ar": "حدد المكتب الذي حقق أكبر انخفاض في قيمة المسار في الربع الرابع مقارنة بالربع الثالث." }, "instructions": { "en": "Compare pipeline value by office across Q3 and Q4, then select one priority office and state the evidence.", "ar": "قارن قيمة المسار حسب المكتب بين الربعين الثالث والرابع، ثم اختر مكتباً ذا أولوية واذكر الدليل." }, "deliverable": { "en": "One office selection and a concise evidence statement.", "ar": "اختيار مكتب واحد وعبارة موجزة مدعومة بالأدلة." }, "estimatedMinutes": 12, "resources": ["growth-opportunity-pipeline"],
+      "hints": [{ "en": "Compare Q3 with Q4, office by office.", "ar": "قارن الربع الثالث بالربع الرابع، مكتباً بمكتب." }, { "en": "Look for a decline steeper than peer offices.", "ar": "ابحث عن انخفاض أشد من المكاتب النظيرة." }, { "en": "The priority office is in Jeddah and qualified-lead volume falls sharply in Q4.", "ar": "المكتب ذو الأولوية يقع في جدة وينخفض فيه حجم الفرص المؤهلة بحدة في الربع الرابع." }],
+      "input": { "fields": ["branch", "evidence"] }, "rubric": { "maxPoints": 20, "skillWeights": { "Business Analysis": 0.7, "Problem Solving": 0.3 }, "criteria": [{ "id": "correct_office", "maxPoints": 12, "labels": { "en": "Correct priority office", "ar": "المكتب الصحيح ذو الأولوية" }, "evaluation": { "expected": "Jeddah Growth" } }, { "id": "evidence", "maxPoints": 8, "labels": { "en": "Evidence-based comparison", "ar": "مقارنة مدعومة بالأدلة" }, "evaluation": { "keywords": ["pipeline", "q3", "q4", "decline", "jeddah"] } }] }
+    },
+    {
+      "id": "test-handoff", "type": "visualization_builder", "title": { "en": "Test the workflow cause", "ar": "اختبر سبب سير العمل" }, "objective": { "en": "Build a visual comparison that tests what is driving Jeddah Growth's Q4 pipeline decline.", "ar": "أنشئ مقارنة مرئية تختبر ما الذي يقود انخفاض مسار نمو جدة في الربع الرابع." }, "instructions": { "en": "Use qualified leads as the signal for opportunity flow, then choose the primary workflow cause and explain the relationship.", "ar": "استخدم الفرص المؤهلة كمؤشر لتدفق الفرص، ثم اختر سبب سير العمل الأساسي واشرح العلاقة." }, "deliverable": { "en": "A metric and grouping selection, primary-cause choice, and chart takeaway.", "ar": "اختيار للمقياس والتجميع والسبب الأساسي وخلاصة للمخطط." }, "estimatedMinutes": 14, "resources": ["growth-opportunity-pipeline"],
+      "hints": [{ "en": "Compare qualified leads by month before assuming the problem is price or market demand.", "ar": "قارن الفرص المؤهلة حسب الشهر قبل افتراض أن المشكلة في السعر أو طلب السوق." }, { "en": "Match the Q4 fall in lead flow with workflow evidence in the documents.", "ar": "اربط انخفاض تدفق الفرص في الربع الرابع بأدلة سير العمل في المستندات." }, { "en": "Use Qualified leads by Month for Jeddah Growth and test the manual discovery handoff hypothesis.", "ar": "استخدم الفرص المؤهلة حسب الشهر لمكتب نمو جدة واختبر فرضية التسليم اليدوي للاستكشاف." }],
+      "input": { "metrics": ["Customers", "Average Order Value", "Revenue", "Marketing Spend"], "dimensions": ["Month", "Product Category"], "causes": ["Manual discovery handoff", "Pricing", "Market demand", "Staffing"] }, "rubric": { "maxPoints": 20, "skillWeights": { "Business Analysis": 0.55, "Process Improvement": 0.45 }, "criteria": [{ "id": "metric", "maxPoints": 7, "labels": { "en": "Appropriate workflow signal", "ar": "مؤشر سير عمل مناسب" }, "evaluation": { "expected": "Customers" } }, { "id": "cause", "maxPoints": 9, "labels": { "en": "Correct primary workflow cause", "ar": "سبب سير العمل الأساسي الصحيح" }, "evaluation": { "expected": "Manual discovery handoff" } }, { "id": "takeaway", "maxPoints": 4, "labels": { "en": "Clear workflow takeaway", "ar": "خلاصة واضحة لسير العمل" }, "evaluation": { "keywords": ["handoff", "discovery", "lead", "delay"] } }] }
+    },
+    {
+      "id": "evidence-synthesis", "type": "written_insight", "title": { "en": "Synthesize stakeholder evidence", "ar": "لخص أدلة أصحاب المصلحة" }, "objective": { "en": "Use company documents to corroborate the workflow diagnosis.", "ar": "استخدم مستندات الشركة لتأكيد تشخيص سير العمل." }, "instructions": { "en": "Select the two strongest sources and explain how they connect the Jeddah pipeline decline to a specific handoff problem.", "ar": "اختر أقوى مصدرين واشرح كيف يربطان انخفاض مسار جدة بمشكلة تسليم محددة." }, "deliverable": { "en": "Two evidence sources and a 60–180 word evidence brief.", "ar": "مصدران للأدلة وملخص أدلة من 60 إلى 180 كلمة." }, "estimatedMinutes": 12, "resources": ["stakeholder-interviews", "process-audit", "leadership-brief"],
+      "hints": [{ "en": "Prioritize sources that describe ownership, handoffs, and duplicate work.", "ar": "أعط الأولوية للمصادر التي تصف المسؤولية والتسليم والعمل المكرر." }, { "en": "The leadership brief defines constraints; it does not prove the operational cause by itself.", "ar": "يحدد ملخص القيادة القيود، لكنه لا يثبت السبب التشغيلي بمفرده." }, { "en": "The strongest pair is the stakeholder interviews and the process audit.", "ar": "أقوى زوج هو مقابلات أصحاب المصلحة وتدقيق العملية." }],
+      "input": { "sources": ["stakeholder-interviews", "process-audit", "leadership-brief"], "minWords": 60, "maxWords": 180 }, "rubric": { "maxPoints": 20, "skillWeights": { "Stakeholder Management": 0.4, "Business Analysis": 0.4, "Business Communication": 0.2 }, "criteria": [{ "id": "sources", "maxPoints": 8, "labels": { "en": "Relevant cross-referenced sources", "ar": "مصادر ذات صلة تمت مقارنتها" }, "evaluation": { "expected": ["stakeholder-interviews", "process-audit"] } }, { "id": "written_reasoning", "maxPoints": 12, "labels": { "en": "Coherent workflow reasoning", "ar": "استدلال متماسك لسير العمل" }, "evaluation": { "requiredConcepts": ["stakeholder", "handoff", "workflow"] } }] }
+    },
+    {
+      "id": "workflow-decision", "type": "single_choice", "title": { "en": "Choose the workflow pilot", "ar": "اختر تجربة سير العمل" }, "objective": { "en": "Choose the most evidence-led Q1 intervention within the SAR 80,000 improvement budget.", "ar": "اختر التدخل الأكثر اعتماداً على الأدلة للربع الأول ضمن ميزانية التحسين البالغة 80,000 ريال." }, "instructions": { "en": "Choose the action that reduces the validated handoff problem without disrupting active engagements.", "ar": "اختر الإجراء الذي يقلل مشكلة التسليم المتحقق منها دون تعطيل الارتباطات النشطة." }, "deliverable": { "en": "One workflow decision with a short rationale.", "ar": "قرار واحد لسير العمل مع مبرر مختصر." }, "estimatedMinutes": 8, "resources": ["process-audit", "leadership-brief", "stakeholder-interviews"],
+      "hints": [{ "en": "Match the intervention to the ownership and handoff evidence.", "ar": "طابق التدخل مع أدلة المسؤولية والتسليم." }, { "en": "A full platform replacement exceeds the stated Q1 constraints.", "ar": "يتجاوز استبدال المنصة بالكامل قيود الربع الأول المحددة." }, { "en": "The brief asks for an eight-week pilot with a named owner and measurable adoption.", "ar": "يطلب الملخص تجربة لمدة ثمانية أسابيع مع مسؤول محدد واعتماد قابل للقياس." }],
+      "input": { "options": [{ "id": "workflow-pilot", "label": { "en": "Pilot a shared intake template, named opportunity owner, and 24-hour discovery review service level for one Jeddah segment.", "ar": "نفذ تجربة لقالب استقبال مشترك ومسؤول فرصة محدد ومستوى خدمة لمراجعة الاستكشاف خلال 24 ساعة لقطاع واحد في جدة." } }, { "id": "crm-replacement", "label": { "en": "Replace the entire CRM platform for every office immediately.", "ar": "استبدل منصة إدارة علاقات العملاء بالكامل لجميع المكاتب فوراً." } }, { "id": "discount", "label": { "en": "Offer a broad price discount to every prospective client.", "ar": "قدم خصماً واسعاً لكل عميل محتمل." } }, { "id": "hire", "label": { "en": "Hire a permanent new team before testing the existing workflow.", "ar": "وظف فريقاً دائماً جديداً قبل اختبار سير العمل الحالي." } }] }, "rubric": { "maxPoints": 15, "skillWeights": { "Decision Making": 0.6, "Process Improvement": 0.4 }, "criteria": [{ "id": "choice", "maxPoints": 10, "labels": { "en": "Evidence-led pilot choice", "ar": "اختيار تجربة قائم على الأدلة" }, "evaluation": { "expected": "workflow-pilot" } }, { "id": "rationale", "maxPoints": 5, "labels": { "en": "Practical workflow rationale", "ar": "مبرر عملي لسير العمل" }, "evaluation": { "keywords": ["pilot", "handoff", "owner", "workflow"] } }] }
+    },
+    {
+      "id": "executive-recommendation", "type": "recommendation", "title": { "en": "Present the operating recommendation", "ar": "قدم التوصية التشغيلية" }, "objective": { "en": "Summarize the workflow diagnosis and recommend one measurable eight-week pilot.", "ar": "لخص تشخيص سير العمل واقترح تجربة واحدة قابلة للقياس لمدة ثمانية أسابيع." }, "instructions": { "en": "State the finding, cite evidence, recommend an action, name the accountable owner, and identify a success metric.", "ar": "اذكر النتيجة واستشهد بالأدلة واقترح إجراءً وحدد المسؤول ومقياس النجاح." }, "deliverable": { "en": "A 100–250 word operating recommendation.", "ar": "توصية تشغيلية من 100 إلى 250 كلمة." }, "estimatedMinutes": 15, "resources": ["growth-opportunity-pipeline", "stakeholder-interviews", "process-audit", "leadership-brief"],
+      "hints": [{ "en": "Use finding, evidence, pilot action, owner, and metric.", "ar": "استخدم النتيجة والأدلة وإجراء التجربة والمسؤول والمقياس." }, { "en": "Name Jeddah Growth, the discovery handoff, and the evidence from interviews and the process audit.", "ar": "اذكر نمو جدة وتسليم الاستكشاف والدليل من المقابلات وتدقيق العملية." }, { "en": "Recommend shared intake and a named-owner pilot; track handoff time and discovery-to-proposal cycle time.", "ar": "أوصِ بالاستقبال المشترك وتجربة المسؤول المحدد؛ وتتبع وقت التسليم ومدة دورة الاستكشاف إلى المقترح." }],
+      "input": { "minWords": 100, "maxWords": 250, "requiredSections": ["finding", "evidence", "action", "owner", "metric"] }, "rubric": { "maxPoints": 25, "skillWeights": { "Business Communication": 0.4, "Business Analysis": 0.3, "Decision Making": 0.3 }, "criteria": [{ "id": "diagnosis", "maxPoints": 8, "labels": { "en": "Accurate workflow diagnosis", "ar": "تشخيص دقيق لسير العمل" }, "evaluation": { "requiredConcepts": ["jeddah", "handoff", "workflow"] } }, { "id": "evidence", "maxPoints": 7, "labels": { "en": "Relevant evidence", "ar": "أدلة ذات صلة" }, "evaluation": { "requiredConcepts": ["stakeholder", "process"] } }, { "id": "recommendation", "maxPoints": 7, "labels": { "en": "Feasible pilot recommendation", "ar": "توصية تجربة قابلة للتنفيذ" }, "evaluation": { "requiredConcepts": ["pilot", "owner"] } }, { "id": "communication", "maxPoints": 3, "labels": { "en": "Clear executive communication", "ar": "تواصل تنفيذي واضح" }, "evaluation": { "minWords": 100 } }] }
+    }
+  ],
+  "completion": { "passingScore": 60, "certificateSkills": ["Business Analysis", "Process Improvement", "Stakeholder Management", "Decision Making"] }
+}

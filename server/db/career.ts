@@ -207,9 +207,10 @@ export async function saveTaskSubmission({ userId, sessionId, taskId, taskType, 
   return { score, completed, taskCount, nextTaskId };
 }
 
-export async function saveCompletion({ userId, sessionId, simulationId, totalScore, skillScores, feedback }: {
+export async function saveCompletion({ userId, sessionId, simulationId, totalScore, skillScores, feedback, portfolioSummary }: {
   userId: number; sessionId: string; simulationId: string; totalScore: number; skillScores: Record<string, number>;
   feedback: { strengths: string[]; improvements: string[]; summary: string };
+  portfolioSummary: string;
 }) {
   const existing = await first(getSupabase().from("simulation_results").select("*").eq("session_id", sessionId), "completion lookup");
   const resultId = existing?.id ?? nanoid(24);
@@ -233,7 +234,7 @@ export async function saveCompletion({ userId, sessionId, simulationId, totalSco
   if (!existingPortfolio) {
     const { error } = await getSupabase().from("portfolio_items").insert({
       id: nanoid(24), user_id: userId, result_id: resultId, simulation_id: simulationId, is_public: true,
-      summary: "Analyzed synthetic retail sales data to identify the primary drivers behind a regional sales decline and proposed a data-supported management recommendation.",
+      summary: portfolioSummary,
     });
     if (error) throw new Error(`Supabase portfolio item creation failed: ${error.message}`);
   }

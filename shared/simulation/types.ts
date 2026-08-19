@@ -46,7 +46,23 @@ export type SimulationConfig = {
   estimatedMinutes: number;
   description: LocalizedText;
   story: LocalizedText;
+  portfolioSummary: LocalizedText;
   skills: string[];
+  dataExplorer?: {
+    title: LocalizedText;
+    subtitle: LocalizedText;
+    entityLabel: LocalizedText;
+    categoryLabel: LocalizedText;
+    metrics: {
+      revenue: LocalizedText;
+      profit: LocalizedText;
+      customers: LocalizedText;
+      units: LocalizedText;
+      aov: LocalizedText;
+      returns: LocalizedText;
+      chart: LocalizedText;
+    };
+  };
   characters: Array<{
     id: string;
     name: string;
