@@ -1,0 +1,24 @@
+# Project TODO
+
+- [x] Define a scalable database schema for user profiles, simulation catalog records, attempts, task submissions, scores, certificates, and public portfolios.
+- [x] Add database migration SQL and synchronize the Drizzle schema with the deployed database.
+- [x] Create a typed, JSON-driven Junior Data Analyst simulation configuration with emails, file assets, five tasks, answer evaluation rules, and scoring rubrics.
+- [x] Seed the Junior Data Analyst catalog simulation and prepare placeholders for future simulation categories.
+- [x] Add data-driven coming-soon placeholder cards for Business Analyst, Financial Analyst, Digital Marketing Specialist, and Laboratory Quality Specialist.
+- [x] Implement a bilingual English/Arabic translation layer with correct document direction and RTL/LTR layouts.
+- [x] Build the public bilingual landing page with Gulf-region professional branding, feature highlights, and authentication calls to action.
+- [x] Implement protected onboarding to capture university, major, graduation year, career interests, country, and preferred language.
+- [x] Build the authenticated simulation catalog with metadata-rich simulation cards and clear access states.
+- [x] Keep simulation discovery public for SEO and exploration while requiring authenticated onboarding before a student can start or resume any simulation workspace.
+- [x] Build a modular workplace shell that renders inbox, files, tasks, progress, and notes from simulation configuration data.
+- [x] Build a responsive interactive sales dataset explorer with filters, KPI cards, charts, sorting, search, and table view.
+- [x] Implement the five Junior Data Analyst task experiences: data exploration, visualization builder, written insight, knowledge check, and final recommendation report.
+- [x] Implement secure server-side task validation and rubric-driven score computation with persistence for attempts and submissions.
+- [x] Build completion feedback with score breakdowns, evidence-based strengths, improvement guidance, and overall performance summary.
+- [x] Add a protected per-task score breakdown with earned points, maximum points, and criterion feedback to the results experience.
+- [x] Build a frontend certificate suitable for download or print and expose each certificate through a unique public URL.
+- [x] Build a student portfolio with completed simulations, scores, certificate links, visibility controls, and a public profile URL.
+- [x] Add robust loading, empty, error, success, and access-denied states throughout the complete journey.
+- [x] Add automated test coverage for simulation configuration validation, scoring rules, and data aggregation.
+- [x] Verify desktop and mobile experiences, English and Arabic RTL layouts, authenticated route guards, public share routes, production build, runtime logs, and automated tests.
+- [x] Finalize documentation, review the TODO status, and save a delivery checkpoint.

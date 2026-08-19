@@ -1,0 +1,252 @@
+{
+  "version": "1.0.0",
+  "id": "sim_junior_data_analyst_grg",
+  "slug": "junior-data-analyst-gulf-retail-group",
+  "title": { "en": "Junior Data Analyst", "ar": "محلل بيانات مبتدئ" },
+  "company": { "en": "Gulf Retail Group", "ar": "مجموعة الخليج للتجزئة" },
+  "role": { "en": "Junior Data Analyst", "ar": "محلل بيانات مبتدئ" },
+  "category": "technology",
+  "industry": { "en": "Retail & Business Intelligence", "ar": "التجزئة وذكاء الأعمال" },
+  "difficulty": "beginner",
+  "estimatedMinutes": 75,
+  "description": { "en": "Investigate a sales decline across Saudi retail branches and make a data-supported recommendation for management.", "ar": "تحقق من انخفاض المبيعات عبر فروع التجزئة في السعودية وقدّم توصية للإدارة مدعومة بالبيانات." },
+  "story": { "en": "You have joined Gulf Retail Group's Business Intelligence team. Before tomorrow's management meeting, Sara Al-Harbi needs an evidence-based explanation for Riyadh's recent sales decline.", "ar": "انضممت إلى فريق ذكاء الأعمال في مجموعة الخليج للتجزئة. قبل اجتماع الإدارة غداً، تحتاج سارة الحربي إلى تفسير مدعوم بالأدلة لانخفاض مبيعات الرياض مؤخراً." },
+  "skills": ["Data Analysis", "Problem Solving", "Business Thinking", "Decision Making", "Business Communication"],
+  "characters": [
+    { "id": "sara", "name": "Sara Al-Harbi", "title": { "en": "BI Manager", "ar": "مديرة ذكاء الأعمال" }, "initials": "SA", "color": "teal" },
+    { "id": "omar", "name": "Omar Al-Qahtani", "title": { "en": "Sales Manager", "ar": "مدير المبيعات" }, "initials": "OA", "color": "blue" },
+    { "id": "lina", "name": "Lina Al-Dosari", "title": { "en": "Finance Analyst", "ar": "محللة مالية" }, "initials": "LA", "color": "amber" }
+  ],
+  "emails": [
+    {
+      "id": "welcome-request",
+      "from": "Sara Al-Harbi",
+      "subject": { "en": "Urgent — Riyadh sales performance", "ar": "عاجل — أداء مبيعات الرياض" },
+      "preview": { "en": "Management has noticed a decline in Riyadh sales. Please investigate the main drivers.", "ar": "لاحظت الإدارة انخفاضاً في مبيعات الرياض. يرجى التحقيق في الأسباب الرئيسية." },
+      "body": { "en": "Good morning. Management has noticed a decline in Riyadh sales during the last quarter. Please investigate the data and identify the main drivers behind the decline. We need your initial findings before tomorrow's management meeting.", "ar": "صباح الخير. لاحظت الإدارة انخفاضاً في مبيعات الرياض خلال الربع الأخير. يرجى تحليل البيانات وتحديد الأسباب الرئيسية وراء هذا الانخفاض. نحتاج إلى نتائجك الأولية قبل اجتماع الإدارة غداً." },
+      "timestamp": "Monday, 09:15",
+      "attachments": ["sales-data", "management-request"]
+    },
+    {
+      "id": "sales-context",
+      "from": "Omar Al-Qahtani",
+      "subject": { "en": "Context from the sales floor", "ar": "سياق من أرض المبيعات" },
+      "preview": { "en": "The Riyadh North team has reported quieter stores and weaker campaign reach.", "ar": "أفاد فريق الرياض الشمالية بأن المتاجر أكثر هدوءاً ووصول الحملة أضعف." },
+      "body": { "en": "Our Riyadh North team has reported quieter stores since early October. The team does not believe basket value is the problem, but customer visits and the local campaign need a closer look.", "ar": "أفاد فريق الرياض الشمالية بأن المتاجر أصبحت أهدأ منذ بداية أكتوبر. لا يعتقد الفريق أن قيمة السلة هي المشكلة، لكن زيارات العملاء والحملة المحلية تحتاجان إلى مراجعة أدق." },
+      "timestamp": "Monday, 11:30",
+      "attachments": ["customer-feedback", "marketing-performance"],
+      "unlockAfterTask": 1
+    },
+    {
+      "id": "meeting-invite",
+      "from": "Sara Al-Harbi",
+      "subject": { "en": "Management meeting — recommendation needed", "ar": "اجتماع الإدارة — نحتاج إلى توصية" },
+      "preview": { "en": "Please consolidate your findings into an actionable recommendation.", "ar": "يرجى توحيد نتائجك في توصية قابلة للتنفيذ." },
+      "body": { "en": "Thank you for the investigation so far. Please bring a concise, evidence-led recommendation that can be implemented within next month's SAR 100,000 budget.", "ar": "شكراً على التحقيق حتى الآن. يرجى تقديم توصية موجزة قائمة على الأدلة ويمكن تنفيذها ضمن ميزانية الشهر القادم البالغة 100,000 ريال سعودي." },
+      "timestamp": "Tuesday, 09:00",
+      "attachments": ["branch-overview"],
+      "unlockAfterTask": 3
+    }
+  ],
+  "files": [
+    {
+      "id": "sales-data",
+      "name": "Sales_Data.xlsx",
+      "kind": "dataset",
+      "label": { "en": "Retail sales dataset", "ar": "مجموعة بيانات مبيعات التجزئة" },
+      "description": { "en": "Twelve months of synthetic branch, product, customer, and marketing performance data.", "ar": "اثنا عشر شهراً من بيانات الأداء الاصطناعية للفروع والمنتجات والعملاء والتسويق." },
+      "usefulFor": ["explore-branch-decline", "investigate-cause"],
+      "content": { "en": "Use the Data workspace to filter and explore this file.", "ar": "استخدم مساحة البيانات لتصفية هذا الملف واستكشافه." }
+    },
+    {
+      "id": "customer-feedback",
+      "name": "Customer_Feedback.pdf",
+      "kind": "report",
+      "label": { "en": "Customer feedback summary", "ar": "ملخص ملاحظات العملاء" },
+      "description": { "en": "A qualitative summary from October to December customer feedback.", "ar": "ملخص نوعي لملاحظات العملاء من أكتوبر إلى ديسمبر." },
+      "usefulFor": ["evidence-brief", "management-recommendation"],
+      "content": { "en": "Riyadh North recorded a 29% increase in comments about low awareness of promotions and fewer in-store events. Product availability complaints were stable. Customer service ratings were broadly unchanged.", "ar": "سجل فرع الرياض الشمالية زيادة بنسبة 29% في الملاحظات المتعلقة بضعف الوعي بالعروض وقلة الفعاليات داخل المتجر. ظلت شكاوى توفر المنتجات مستقرة، كما بقيت تقييمات خدمة العملاء دون تغيير كبير." }
+    },
+    {
+      "id": "marketing-performance",
+      "name": "Marketing_Performance.pdf",
+      "kind": "report",
+      "label": { "en": "Local campaign performance", "ar": "أداء الحملة المحلية" },
+      "description": { "en": "Campaign reach and engagement by branch cluster.", "ar": "وصول الحملة والتفاعل حسب مجموعة الفروع." },
+      "usefulFor": ["evidence-brief", "decision"],
+      "content": { "en": "The Riyadh North local campaign budget fell 42% in Q4 after creative assets expired. Reach fell 38% and store-visit attributed conversions fell 34%. Riyadh Olaya's campaign remained active and was broadly stable.", "ar": "انخفضت ميزانية الحملة المحلية في الرياض الشمالية بنسبة 42% في الربع الرابع بعد انتهاء الأصول الإبداعية. انخفض الوصول 38% والتحويلات المنسوبة لزيارة المتجر 34%. ظلت حملة الرياض العليا نشطة ومستقرة إلى حد كبير." }
+    },
+    {
+      "id": "branch-overview",
+      "name": "Branch_Overview.pdf",
+      "kind": "report",
+      "label": { "en": "Branch operations overview", "ar": "نظرة عامة على عمليات الفروع" },
+      "description": { "en": "Operational context across priority branches.", "ar": "سياق تشغيلي عبر الفروع ذات الأولوية." },
+      "usefulFor": ["decision", "management-recommendation"],
+      "content": { "en": "Riyadh North maintained normal opening hours, staffing, and stock availability in Q4. The branch has available capacity for weekend activation events. No structural operational issue was recorded.", "ar": "حافظ فرع الرياض الشمالية على ساعات العمل والتوظيف وتوفر المخزون بشكل طبيعي في الربع الرابع. يمتلك الفرع قدرة متاحة لفعاليات تنشيط نهاية الأسبوع. لم يتم تسجيل مشكلة تشغيلية هيكلية." }
+    },
+    {
+      "id": "management-request",
+      "name": "Management_Request.pdf",
+      "kind": "memo",
+      "label": { "en": "Management brief", "ar": "ملخص طلب الإدارة" },
+      "description": { "en": "The scope, deadline, and decision constraint for this analysis.", "ar": "النطاق والموعد النهائي وقيد القرار لهذا التحليل." },
+      "usefulFor": ["management-recommendation"],
+      "content": { "en": "Provide a concise diagnosis and a single recommendation for next month. The budget is capped at SAR 100,000. Prioritize an action that can address the root cause, not only the symptom.", "ar": "قدّم تشخيصاً موجزاً وتوصية واحدة للشهر القادم. الحد الأقصى للميزانية هو 100,000 ريال سعودي. أعط الأولوية لإجراء يعالج السبب الجذري وليس العرض فقط." }
+    }
+  ],
+  "datasetBlueprint": {
+    "months": ["2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12"],
+    "branches": [
+      { "name": "Riyadh North", "city": "Riyadh", "baselineCustomers": 2320, "baselineAov": 268 },
+      { "name": "Riyadh Olaya", "city": "Riyadh", "baselineCustomers": 2140, "baselineAov": 276 },
+      { "name": "Jeddah Corniche", "city": "Jeddah", "baselineCustomers": 2010, "baselineAov": 258 },
+      { "name": "Jeddah Al Rawdah", "city": "Jeddah", "baselineCustomers": 1830, "baselineAov": 252 },
+      { "name": "Dammam Central", "city": "Dammam", "baselineCustomers": 1690, "baselineAov": 245 },
+      { "name": "Khobar Waterfront", "city": "Khobar", "baselineCustomers": 1610, "baselineAov": 263 },
+      { "name": "Makkah Gate", "city": "Makkah", "baselineCustomers": 1770, "baselineAov": 238 },
+      { "name": "Madinah Central", "city": "Madinah", "baselineCustomers": 1660, "baselineAov": 234 },
+      { "name": "Abha Boulevard", "city": "Abha", "baselineCustomers": 1460, "baselineAov": 228 },
+      { "name": "Tabuk Park", "city": "Tabuk", "baselineCustomers": 1330, "baselineAov": 221 }
+    ],
+    "categories": [
+      { "category": "Electronics", "product": "Smart Home Hub", "multiplier": 1.22, "margin": 0.24 },
+      { "category": "Home & Living", "product": "Home Essentials Set", "multiplier": 1.03, "margin": 0.34 },
+      { "category": "Beauty", "product": "Wellness Care Kit", "multiplier": 0.76, "margin": 0.41 },
+      { "category": "Fashion", "product": "Seasonal Modest Wear", "multiplier": 0.91, "margin": 0.39 },
+      { "category": "Grocery", "product": "Premium Pantry Bundle", "multiplier": 0.68, "margin": 0.29 }
+    ],
+    "anomaly": { "branch": "Riyadh North", "months": ["2025-10", "2025-11", "2025-12"], "customerMultiplier": 0.63, "marketingMultiplier": 0.58, "returnMultiplier": 1.22 }
+  },
+  "tasks": [
+    {
+      "id": "explore-branch-decline",
+      "type": "data_exploration",
+      "title": { "en": "Locate the decline", "ar": "حدد موقع الانخفاض" },
+      "objective": { "en": "Identify the branch with the largest Q4 revenue decline compared with Q3.", "ar": "حدد الفرع الذي حقق أكبر انخفاض في الإيرادات في الربع الرابع مقارنة بالربع الثالث." },
+      "instructions": { "en": "Use the Data workspace. Compare revenue by branch across Q3 and Q4, then select one priority branch and state the evidence you observed.", "ar": "استخدم مساحة البيانات. قارن الإيرادات حسب الفرع بين الربعين الثالث والرابع، ثم اختر فرعاً ذا أولوية واذكر الدليل الذي لاحظته." },
+      "deliverable": { "en": "One branch selection and a concise evidence statement.", "ar": "اختيار فرع واحد وعبارة موجزة مدعومة بالأدلة." },
+      "estimatedMinutes": 12,
+      "resources": ["sales-data"],
+      "hints": [
+        { "en": "Start by filtering the date range to Q3, then compare it with Q4.", "ar": "ابدأ بتصفية النطاق الزمني إلى الربع الثالث، ثم قارنه بالربع الرابع." },
+        { "en": "Look at revenue grouped by branch, not only the overall total.", "ar": "انظر إلى الإيرادات مجمعة حسب الفرع، وليس الإجمالي فقط." },
+        { "en": "The priority branch is in Riyadh and shows a sharper decline than its peer branch.", "ar": "الفرع ذو الأولوية يقع في الرياض ويُظهر انخفاضاً أشد من الفرع النظير." }
+      ],
+      "input": { "fields": ["branch", "evidence"] },
+      "rubric": {
+        "maxPoints": 20,
+        "skillWeights": { "Data Analysis": 0.7, "Problem Solving": 0.3 },
+        "criteria": [
+          { "id": "correct_branch", "maxPoints": 12, "labels": { "en": "Correct priority branch", "ar": "الفرع الصحيح ذو الأولوية" }, "evaluation": { "expected": "Riyadh North" } },
+          { "id": "evidence", "maxPoints": 8, "labels": { "en": "Evidence-based comparison", "ar": "مقارنة مدعومة بالأدلة" }, "evaluation": { "keywords": ["revenue", "q3", "q4", "decline", "decrease"] } }
+        ]
+      }
+    },
+    {
+      "id": "investigate-cause",
+      "type": "visualization_builder",
+      "title": { "en": "Test the cause", "ar": "اختبر السبب" },
+      "objective": { "en": "Build a visual comparison that tests what is driving Riyadh North's Q4 revenue decline.", "ar": "أنشئ مقارنة مرئية تختبر ما الذي يقود انخفاض إيرادات الرياض الشمالية في الربع الرابع." },
+      "instructions": { "en": "Configure a chart for Riyadh North and choose the primary driver that best explains the revenue change. Use the chart title to explain the relationship.", "ar": "قم بتكوين مخطط لفرع الرياض الشمالية واختر المحرك الرئيسي الذي يفسر تغير الإيرادات. استخدم عنوان المخطط لشرح العلاقة." },
+      "deliverable": { "en": "A metric and grouping selection, primary-cause choice, and chart takeaway.", "ar": "اختيار للمقياس والتجميع والسبب الأساسي وخلاصة للمخطط." },
+      "estimatedMinutes": 14,
+      "resources": ["sales-data"],
+      "hints": [
+        { "en": "Compare customer traffic and average order value before deciding.", "ar": "قارن حركة العملاء ومتوسط قيمة الطلب قبل اتخاذ القرار." },
+        { "en": "A stable average order value cannot explain a large revenue loss by itself.", "ar": "لا يمكن لمتوسط قيمة طلب مستقر أن يفسر وحده خسارة كبيرة في الإيرادات." },
+        { "en": "Use Customers by Month for Riyadh North, then compare it against Average Order Value.", "ar": "استخدم العملاء حسب الشهر للرياض الشمالية، ثم قارنه بمتوسط قيمة الطلب." }
+      ],
+      "input": { "metrics": ["Customers", "Average Order Value", "Revenue", "Marketing Spend"], "dimensions": ["Month", "Product Category"], "causes": ["Lower customer traffic", "Lower average order value", "Product mix", "Discounts"] },
+      "rubric": {
+        "maxPoints": 20,
+        "skillWeights": { "Data Analysis": 0.55, "Problem Solving": 0.45 },
+        "criteria": [
+          { "id": "metric", "maxPoints": 7, "labels": { "en": "Appropriate diagnostic metric", "ar": "مقياس تشخيصي مناسب" }, "evaluation": { "expected": "Customers" } },
+          { "id": "cause", "maxPoints": 9, "labels": { "en": "Correct primary cause", "ar": "السبب الأساسي الصحيح" }, "evaluation": { "expected": "Lower customer traffic" } },
+          { "id": "takeaway", "maxPoints": 4, "labels": { "en": "Clear chart takeaway", "ar": "خلاصة واضحة من المخطط" }, "evaluation": { "keywords": ["customer", "traffic", "stable", "aov", "revenue"] } }
+        ]
+      }
+    },
+    {
+      "id": "evidence-brief",
+      "type": "written_insight",
+      "title": { "en": "Connect the evidence", "ar": "اربط الأدلة" },
+      "objective": { "en": "Use relevant company documents to corroborate the data finding.", "ar": "استخدم مستندات الشركة ذات الصلة لتأكيد نتيجة البيانات." },
+      "instructions": { "en": "Review the available documents. Select the two strongest sources and explain how they support or challenge your working diagnosis.", "ar": "راجع المستندات المتاحة. اختر أقوى مصدرين واشرح كيف يدعمان أو يتحديان تشخيصك المبدئي." },
+      "deliverable": { "en": "Two evidence sources and a 60–180 word evidence brief.", "ar": "مصدران للأدلة وملخص أدلة من 60 إلى 180 كلمة." },
+      "estimatedMinutes": 12,
+      "resources": ["customer-feedback", "marketing-performance", "branch-overview"],
+      "hints": [
+        { "en": "Prioritize documents that shed light on customer visits or campaign reach.", "ar": "أعط الأولوية للمستندات التي توضح زيارات العملاء أو وصول الحملة." },
+        { "en": "Operational continuity is useful context, but it is not the strongest root-cause evidence.", "ar": "استمرارية العمليات سياق مفيد، لكنها ليست أقوى دليل على السبب الجذري." },
+        { "en": "The strongest pair is the customer feedback summary and marketing performance report.", "ar": "أقوى زوج هو ملخص ملاحظات العملاء وتقرير أداء التسويق." }
+      ],
+      "input": { "sources": ["customer-feedback", "marketing-performance", "branch-overview"], "minWords": 60, "maxWords": 180 },
+      "rubric": {
+        "maxPoints": 20,
+        "skillWeights": { "Problem Solving": 0.45, "Business Thinking": 0.35, "Business Communication": 0.2 },
+        "criteria": [
+          { "id": "sources", "maxPoints": 8, "labels": { "en": "Relevant cross-referenced sources", "ar": "مصادر ذات صلة تمت مقارنتها" }, "evaluation": { "expected": ["customer-feedback", "marketing-performance"] } },
+          { "id": "written_reasoning", "maxPoints": 12, "labels": { "en": "Coherent evidence-led reasoning", "ar": "استدلال متماسك قائم على الأدلة" }, "evaluation": { "requiredConcepts": ["marketing", "customer", "traffic"] } }
+        ]
+      }
+    },
+    {
+      "id": "decision",
+      "type": "single_choice",
+      "title": { "en": "Make the budget decision", "ar": "اتخذ قرار الميزانية" },
+      "objective": { "en": "Choose the most evidence-led action within the SAR 100,000 monthly budget.", "ar": "اختر الإجراء الأكثر اعتماداً على الأدلة ضمن ميزانية شهرية قدرها 100,000 ريال سعودي." },
+      "instructions": { "en": "Read the management constraint and choose the action that addresses the likely root cause while remaining feasible next month.", "ar": "اقرأ قيد الإدارة واختر الإجراء الذي يعالج السبب الجذري المحتمل ويبقى قابلاً للتنفيذ الشهر القادم." },
+      "deliverable": { "en": "One business decision with a short rationale.", "ar": "قرار تجاري واحد مع مبرر مختصر." },
+      "estimatedMinutes": 8,
+      "resources": ["marketing-performance", "branch-overview", "management-request"],
+      "hints": [
+        { "en": "Match the investment to the cause you have validated.", "ar": "طابق الاستثمار مع السبب الذي قمت بالتحقق منه." },
+        { "en": "A broad discount changes price, while the evidence points elsewhere.", "ar": "الخصم الواسع يغير السعر، بينما تشير الأدلة إلى مكان آخر." },
+        { "en": "Riyadh North has capacity for activation events and its local campaign reach declined.", "ar": "يمتلك فرع الرياض الشمالية قدرة على فعاليات تنشيط، وقد انخفض وصول حملته المحلية." }
+      ],
+      "input": { "options": [
+        { "id": "local-campaign", "label": { "en": "Restore a targeted Riyadh North campaign and run weekend in-store activation events.", "ar": "استعادة حملة مستهدفة للرياض الشمالية وتنفيذ فعاليات داخل المتجر في عطلة نهاية الأسبوع." } },
+        { "id": "global-discount", "label": { "en": "Apply a large discount across all product categories nationwide.", "ar": "تطبيق خصم كبير على جميع فئات المنتجات على مستوى المملكة." } },
+        { "id": "new-branch", "label": { "en": "Allocate the budget to open a new branch in Riyadh.", "ar": "تخصيص الميزانية لافتتاح فرع جديد في الرياض." } },
+        { "id": "inventory", "label": { "en": "Increase inventory across every category at Riyadh North.", "ar": "زيادة المخزون عبر كل الفئات في الرياض الشمالية." } }
+      ] },
+      "rubric": {
+        "maxPoints": 15,
+        "skillWeights": { "Decision Making": 0.65, "Business Thinking": 0.35 },
+        "criteria": [
+          { "id": "choice", "maxPoints": 10, "labels": { "en": "Evidence-led decision", "ar": "قرار قائم على الأدلة" }, "evaluation": { "expected": "local-campaign" } },
+          { "id": "rationale", "maxPoints": 5, "labels": { "en": "Business rationale", "ar": "مبرر تجاري" }, "evaluation": { "keywords": ["traffic", "campaign", "customer", "marketing"] } }
+        ]
+      }
+    },
+    {
+      "id": "management-recommendation",
+      "type": "recommendation",
+      "title": { "en": "Present to management", "ar": "قدم عرضك للإدارة" },
+      "objective": { "en": "Summarize the diagnosis and recommend a single, measurable next action.", "ar": "لخص التشخيص واقترح إجراءً واحداً قابلاً للقياس." },
+      "instructions": { "en": "Prepare a concise recommendation for Sara, Omar, and the finance representative. State the finding, cite evidence, recommend an action, and name one metric to monitor.", "ar": "أعد توصية موجزة لسارة وعمر وممثل المالية. اذكر النتيجة واستشهد بالأدلة واقترح إجراءً وحدد مقياساً واحداً للمتابعة." },
+      "deliverable": { "en": "A 100–250 word management recommendation.", "ar": "توصية للإدارة من 100 إلى 250 كلمة." },
+      "estimatedMinutes": 15,
+      "resources": ["sales-data", "customer-feedback", "marketing-performance", "branch-overview", "management-request"],
+      "hints": [
+        { "en": "Use a simple structure: finding, evidence, action, success metric.", "ar": "استخدم بنية بسيطة: النتيجة، الأدلة، الإجراء، مقياس النجاح." },
+        { "en": "Name Riyadh North, lower customer traffic, and the local campaign evidence.", "ar": "اذكر الرياض الشمالية وانخفاض حركة العملاء ودليل الحملة المحلية." },
+        { "en": "Recommend a targeted campaign plus in-store activation, with customer visits or campaign-attributed visits as the metric.", "ar": "أوصِ بحملة مستهدفة مع تنشيط داخل المتجر، مع زيارات العملاء أو الزيارات المنسوبة للحملة كمقياس." }
+      ],
+      "input": { "minWords": 100, "maxWords": 250, "requiredSections": ["finding", "evidence", "action", "metric"] },
+      "rubric": {
+        "maxPoints": 25,
+        "skillWeights": { "Business Communication": 0.4, "Business Thinking": 0.3, "Decision Making": 0.3 },
+        "criteria": [
+          { "id": "diagnosis", "maxPoints": 8, "labels": { "en": "Accurate diagnosis", "ar": "تشخيص دقيق" }, "evaluation": { "requiredConcepts": ["riyadh", "customer", "traffic"] } },
+          { "id": "evidence", "maxPoints": 7, "labels": { "en": "Relevant evidence", "ar": "أدلة ذات صلة" }, "evaluation": { "requiredConcepts": ["marketing", "campaign"] } },
+          { "id": "recommendation", "maxPoints": 7, "labels": { "en": "Feasible recommendation", "ar": "توصية قابلة للتنفيذ" }, "evaluation": { "requiredConcepts": ["targeted", "activation"] } },
+          { "id": "communication", "maxPoints": 3, "labels": { "en": "Clear management communication", "ar": "تواصل واضح مع الإدارة" }, "evaluation": { "minWords": 100 } }
+        ]
+      }
+    }
+  ],
+  "completion": { "passingScore": 60, "certificateSkills": ["Data Analysis", "Problem Solving", "Business Communication", "Decision Making"] }
+}
