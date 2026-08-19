@@ -37,3 +37,10 @@
 - [x] Push the fully updated CareerSim Gulf codebase to github.com/careersimulation-ux/Careersim and verify the remote default branch.
 - [x] Switch to an approved GitHub identity or repository target with Write access and retry the CareerSim Gulf push.
 - [x] Fix Vercel deployment configuration so the compiled CareerSim Gulf interface and API routes are served instead of repository source files.
+- [x] Audit the existing persistence and authentication flow, then connect CareerSim Gulf to the approved Supabase project using a non-disruptive migration plan.
+- [x] Resolve Supabase management-access validation for `gnarrdggnzmfgkiqzret`; management authorization remained unavailable, so the owner safely applied the reviewed migration through the SQL Editor and exposed the `careersim` schema.
+- [x] Create an isolated `careersim` PostgreSQL schema with secure server-only access, relational constraints, indexes, and row-level-security posture in the selected Supabase project.
+- [x] Prepare and provide a non-destructive SQL Editor migration for the owner to apply to project `gnarrdggnzmfgkiqzret`.
+- [x] Replace the CareerSim server persistence helpers with a Supabase-backed implementation while preserving Manus OAuth identities and existing tRPC contracts.
+- [x] Verify the full authenticated Supabase workflow: onboarding, session start, five task submissions, completion, certificate, and portfolio records.
+- [x] Validate a complete simulated student workflow against Supabase and document the migration, credential, and production configuration requirements.

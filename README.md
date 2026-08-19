@@ -8,7 +8,7 @@ The main journey is designed to feel like a workplace assignment rather than an 
 
 ## Architecture
 
-The implementation uses the initialized managed full-stack scaffold: **React 19**, **Vite**, **Tailwind CSS 4**, **Express 4**, **tRPC 11**, **Drizzle ORM**, a managed MySQL/TiDB-compatible database, and **Manus OAuth**. Authentication and authorization are enforced in server-side tRPC procedures; browser clients never receive private scoring metadata or server credentials.
+The implementation uses **React 19**, **Vite**, **Tailwind CSS 4**, **Express 4**, **tRPC 11**, **Supabase PostgreSQL**, and **Manus OAuth**. Manus OAuth continues to establish the student session; the server synchronizes that identity to the private CareerSim Supabase schema before protected workflows run. Authentication and authorization are enforced in server-side tRPC procedures; browser clients never receive private scoring metadata or server credentials.
 
 | Layer | Implementation | Responsibility |
 |---|---|---|
@@ -18,7 +18,7 @@ The implementation uses the initialized managed full-stack scaffold: **React 19*
 | Simulation engine | `server/simulationEngine.ts` | Configuration loading, catalog-safe projections, and removal of private evaluation rules from client payloads. |
 | Dataset and scoring | `server/syntheticData.ts`, `server/scoringEngine.ts` | Reproducible synthetic data and deterministic, hint-aware rubric scoring. |
 | Feedback | `server/feedbackEngine.ts` | Structured, server-side LLM feedback with an evidence-grounded deterministic fallback. |
-| API and persistence | `server/routers.ts`, `server/db/career.ts`, `drizzle/schema.ts` | Authenticated orchestration, ownership checks, sessions, submissions, results, certificates, portfolios, and events. |
+| API and persistence | `server/routers.ts`, `server/db.ts`, `server/db/career.ts`, `server/supabase.ts` | Authenticated orchestration, Manus OAuth identity synchronization, ownership checks, sessions, submissions, results, certificates, portfolios, and events. |
 
 ## JSON-Driven Simulation Engine
 
@@ -40,7 +40,7 @@ To introduce an additional task type, add it to the `SimulationTaskType` union i
 
 The data model stores user profiles, simulations, sessions, task submissions, scores, results, certificates, public portfolio items, and simulation events. Student-owned routes enforce `ctx.user.id` ownership before reading or modifying any session, submission, score, result, certificate, or portfolio object. Public certificate and portfolio routes expose only the scoped information needed for verification or opt-in sharing.
 
-Database source of truth is `drizzle/schema.ts`. The initial CareerSim migration is located at `drizzle/0001_lumpy_king_cobra.sql` and has been applied to the managed database.
+The active database source of truth is `supabase/migrations/0001_careersim_schema.sql`. It creates an isolated `careersim` schema containing user identities, profiles, simulations, sessions, submissions, scores, results, certificates, portfolio items, and events. The historical Drizzle/MySQL schema remains in the repository only as a reference to the original model and is no longer used by the runtime data layer.
 
 ## Development
 
@@ -57,17 +57,18 @@ pnpm check
 pnpm test
 ```
 
-When changing the schema, keep Drizzle and the database synchronized:
+When changing the schema, add a reviewed PostgreSQL migration under `supabase/migrations/` and apply it through the approved Supabase migration workflow. The `careersim` schema must remain exposed in **Project Settings → API → Exposed schemas** for the server-side client to reach it.
 
 ```bash
-pnpm drizzle-kit generate
+pnpm check
+pnpm test
 ```
 
-Review the generated migration SQL before applying it through the approved database migration workflow. Avoid destructive schema changes without a tested backup and migration plan.
+Review every SQL migration before applying it. Avoid destructive schema changes without a tested backup and migration plan.
 
 ## Environment and Security
 
-The managed platform injects the application database connection, OAuth configuration, and server-only LLM credentials. Do not commit `.env` files, service credentials, OAuth secrets, or API keys. LLM calls are performed only from `server/feedbackEngine.ts`; task correctness and numerical scoring remain deterministic and server-controlled.
+The server requires `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` to reach the `careersim` schema. The service-role key bypasses RLS and must remain server-only; it must never be added to Vite `VITE_*` variables or exposed in browser code. `SUPABASE_PUBLISHABLE_KEY` is suitable only for a future browser client protected by explicit RLS policies. Do not commit `.env` files, service credentials, OAuth secrets, or API keys. LLM calls are performed only from `server/feedbackEngine.ts`; task correctness and numerical scoring remain deterministic and server-controlled.
 
 Public browsing is intentionally permitted for the marketing catalog. Starting or resuming a simulation requires Manus OAuth and a completed onboarding profile. The catalog-safe API omits workplace messages, documents, datasets, and rubric evaluation metadata; the protected workspace API returns only content necessary for the authenticated student’s active session.
 
@@ -89,13 +90,13 @@ The certificate template states that it represents completion of a job simulatio
 
 ## Deployment
 
-This project is configured for the platform’s managed autoscaling Node deployment. Before publishing, run `pnpm check` and `pnpm test`, then create a project checkpoint. The deployed service should retain the platform-provided environment variables and use a managed database connection.
+This project is configured for the platform’s managed autoscaling Node deployment. Before publishing, run `pnpm check` and `pnpm test`, then create a project checkpoint. The deployed service must retain the OAuth, LLM, and server-only Supabase environment variables.
 
 ### Vercel
 
 CareerSim Gulf is a **Vite React SPA with an Express/tRPC API**, rather than a Next.js application. The root `vercel.json` sets `dist/public` as the Vite output, deploys `api/[...path].ts` as the serverless API entry point, and rewrites client-side routes to the compiled `index.html`. Without this configuration, Vercel can fall back to serving repository files rather than the built interface.
 
-Set these environment variables in Vercel for both Preview and Production before testing sign-in or any protected workflow: `DATABASE_URL`, `JWT_SECRET`, `VITE_APP_ID`, `VITE_OAUTH_PORTAL_URL`, `OAUTH_SERVER_URL`, `OWNER_OPEN_ID`, `BUILT_IN_FORGE_API_URL`, and `BUILT_IN_FORGE_API_KEY`. Also update the OAuth provider callback URL to `https://<your-vercel-domain>/api/oauth/callback`. Manus-managed environment values do not transfer automatically to Vercel.
+Set these environment variables in Vercel for both Preview and Production before testing sign-in or any protected workflow: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `JWT_SECRET`, `VITE_APP_ID`, `VITE_OAUTH_PORTAL_URL`, `OAUTH_SERVER_URL`, `OWNER_OPEN_ID`, `BUILT_IN_FORGE_API_URL`, and `BUILT_IN_FORGE_API_KEY`. Also update the OAuth provider callback URL to `https://<your-vercel-domain>/api/oauth/callback`. Manus-managed environment values do not transfer automatically to Vercel.
 
 After setting those variables, redeploy from the Vercel dashboard. The production frontend is built with `pnpm build:client`; API calls are served by the Vercel function.
 
