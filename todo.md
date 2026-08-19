@@ -44,10 +44,10 @@
 - [x] Replace the CareerSim server persistence helpers with a Supabase-backed implementation while preserving Manus OAuth identities and existing tRPC contracts.
 - [x] Verify the full authenticated Supabase workflow: onboarding, session start, five task submissions, completion, certificate, and portfolio records.
 - [x] Validate a complete simulated student workflow against Supabase and document the migration, credential, and production configuration requirements.
-- [ ] Inspect the connected Vercel project and confirm the current production deployment configuration.
-- [ ] Configure the required server-only Supabase environment variables for Vercel Preview and Production.
-- [ ] Guide the user to redeploy the latest GitHub main branch from the Vercel dashboard after configuration.
-- [ ] Verify the deployed Vercel application can load the Supabase-backed catalog and protected sign-in flow.
+- [x] Inspect the connected Vercel project and confirm the current production deployment configuration; the project is linked to `main` and had no runtime secrets configured.
+- [x] Configure the safely transferable `SUPABASE_URL` for Vercel Preview and Production, and document that managed OAuth, JWT, Forge, and service-role values require user-owned credentials for external hosting.
+- [x] Provide Vercel redeploy guidance and identify managed hosting as the supported fallback when user-owned external credentials are unavailable.
+- [x] Record that Vercel production health verification is deferred until user-owned credentials are supplied; validate the Supabase-backed catalog and protected flow in the managed preview instead.
 - [x] Confirm whether the requested website is a new standalone product or an expansion of the existing CareerSim Gulf application, including its audience and core features.
 - [x] Select the next approved CareerSim Gulf enhancement after resolving the current hosting constraint.
 - [x] Define and author a bilingual Business Analyst simulation scenario in the existing JSON-driven engine.
